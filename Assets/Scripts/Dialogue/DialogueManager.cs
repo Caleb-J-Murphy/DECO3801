@@ -6,10 +6,17 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("Dialogue Settings")]
     public TMP_Text characterNameText;
     public TMP_Text dialogueText;
     public TextAsset dialogueFile;
     public GameObject dialoguePanel;
+
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+
+    public AudioClip[] dialogueAudioClips;
+
 
 
     private string[] dialogueLines;
@@ -49,6 +56,13 @@ public class DialogueManager : MonoBehaviour
 
             characterNameText.text = characterName;
             dialogueText.text = dialogue;
+
+            // Play audio clip if available for the current line
+            if (currentLine < dialogueAudioClips.Length)
+            {
+                audioSource.clip = dialogueAudioClips[currentLine];
+                audioSource.Play();
+            }
 
             currentLine++;
         }
