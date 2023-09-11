@@ -416,9 +416,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d05a86ea0d7df47bfb95bf393ef73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterNameText: {fileID: 0}
-  dialogueText: {fileID: 0}
-  dialoguePanel: {fileID: 0}
+  characterNameText: {fileID: 1656347906}
+  dialogueText: {fileID: 2119373756}
+  dialoguePanel: {fileID: 1653060552}
   dialogues: []
 --- !u!4 &1476956105
 Transform:

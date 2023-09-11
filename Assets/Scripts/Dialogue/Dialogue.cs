@@ -6,6 +6,6 @@ using UnityEngine;
 public class Dialogue : MonoBehaviour
 {
     public string characterName;
-
+    [TextArea(3, 10)]
     public string[] dialogueLines;
 }

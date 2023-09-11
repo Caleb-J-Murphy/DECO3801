@@ -8,44 +8,66 @@ public class DialogueManager : MonoBehaviour
 {
     public TMP_Text characterNameText;
     public TMP_Text dialogueText;
+    public TextAsset dialogueFile;
     public GameObject dialoguePanel;
-    public Dialogue[] dialogues;
 
-    private int currentDialogueIndex = 0;
-    // Start is called before the first frame update
-    void Start()
+
+    private string[] dialogueLines;
+    private int currentLine = 0;
+
+    private void Start()
     {
-        StartDialogue();
+        LoadDialogue();
+        DisplayDialogue();
+        DisplayNextLine();
     }
 
-    public void StartDialogue()
+    public void Update()
     {
-        DisplayDialogue(dialogues[currentDialogueIndex]);
+        if (Input.GetMouseButtonDown(0))
+        {
+            DisplayNextLine();
+        }
+
+    }
+
+    private void LoadDialogue()
+    {
+        if (dialogueFile != null)
+        {
+            dialogueLines = dialogueFile.text.Split('\n');
+        }
     }
 
     public void DisplayNextLine()
     {
-        currentDialogueIndex++;
-        if (currentDialogueIndex < dialogues.Length)
+        if (currentLine < dialogueLines.Length)
         {
-            DisplayDialogue(dialogues[currentDialogueIndex]);
+            string[] lineParts = dialogueLines[currentLine].Split(':');
+            string characterName = lineParts[0].Trim();
+            string dialogue = lineParts[1].Trim();
+
+            characterNameText.text = characterName;
+            dialogueText.text = dialogue;
+
+            currentLine++;
         }
         else
         {
-            EndDialogue();
+            EndDialogue();          
         }
     }
 
-    private void DisplayDialogue(Dialogue dialogue)
+    private void DisplayDialogue()
     {
         dialoguePanel.SetActive(true);
-        characterNameText.text = dialogue.characterName;
-        dialogueText.text = dialogue.dialogueLines[0];
     }
 
     private void EndDialogue()
     {
         dialoguePanel.SetActive(false);
+        characterNameText.text = "";
+        dialogueText.text = "";
         // Handle the end of the conversation (e.g., load the next scene).
     }
 }
