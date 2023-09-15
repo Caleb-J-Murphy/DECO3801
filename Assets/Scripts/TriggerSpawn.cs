@@ -18,6 +18,9 @@ public class TriggerSpawn : MonoBehaviour
             // Clone the prefab at the calculated spawn position.
             GameObject clone = Instantiate(prefabToClone, spawnPosition, Quaternion.identity);
 
+            // Remove the box collider so that it cannot trigger another one
+            Destroy(GetComponent<BoxCollider>());
+
 
             Transform cloneTransform = clone.transform;
 
@@ -31,9 +34,6 @@ public class TriggerSpawn : MonoBehaviour
                 if (childTriggerSpawn != null)
                 {
                     childTriggerSpawn.previousClone = gameObject;
-                } else
-                {
-                    Debug.Log("Could not find child trigger");
                 }
             }
 
