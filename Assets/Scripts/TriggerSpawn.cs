@@ -5,6 +5,7 @@ using UnityEngine;
 public class TriggerSpawn : MonoBehaviour
 {
     public GameObject prefabToClone; // Reference to the prefab you want to clone.
+    public GameObject previousClone;
     public Vector3 spawnOffset = Vector3.up; // Offset from the GameObject's position.
 
     private void OnTriggerEnter(Collider other)
@@ -15,7 +16,42 @@ public class TriggerSpawn : MonoBehaviour
             Vector3 spawnPosition = transform.position + spawnOffset;
 
             // Clone the prefab at the calculated spawn position.
-            Instantiate(prefabToClone, spawnPosition, Quaternion.identity);
+            GameObject clone = Instantiate(prefabToClone, spawnPosition, Quaternion.identity);
+
+
+            Transform cloneTransform = clone.transform;
+
+            Transform cloneTrigger = cloneTransform.GetChild(3);
+
+            Debug.Log(cloneTrigger.name); //This is the child
+
+            if (cloneTrigger != null)
+            {
+                TriggerSpawn childTriggerSpawn = cloneTrigger.GetComponent<TriggerSpawn>();
+                if (childTriggerSpawn != null)
+                {
+                    childTriggerSpawn.previousClone = gameObject;
+                } else
+                {
+                    Debug.Log("Could not find child trigger");
+                }
+            }
+
+            // Check if the previousClone is not null before calling Die().
+            if (previousClone != null)
+            {
+                TriggerSpawn previousTriggerSpawn = previousClone.GetComponent<TriggerSpawn>();
+                if (previousTriggerSpawn != null)
+                {
+                    previousTriggerSpawn.Die();
+                }
+            }
         }
+    }
+
+    public void Die()
+    {
+        // Destroy the parent GameObject.
+        Destroy(transform.parent.gameObject);
     }
 }
