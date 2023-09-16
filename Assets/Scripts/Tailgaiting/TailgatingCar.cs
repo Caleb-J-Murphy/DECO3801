@@ -37,7 +37,6 @@ public class TailgatingCar : MonoBehaviour
         {
             Vector3 localVelocity = transform.InverseTransformDirection(rigidbody.velocity);
             float currentSpeed = localVelocity.z; // Use local z-component for forward/backward speed
-            Debug.Log("Current Speed: " + currentSpeed);
             float accelerationForce = 0f;
             if (currentSpeed > maxSpeed)
             {

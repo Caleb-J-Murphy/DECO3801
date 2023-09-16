@@ -7,14 +7,17 @@ public class PlayerDrivingTailgating : MonoBehaviour
     
     public float maxSpeed = 10f; // Maximum speed of the car
     public float maxAcceleration = 2f; // Rate of acceleration
+    public float keepUpAcceleration;
     public float maxDeceleration = 4f; // Rate of deceleration
     public float brakePower = 10f; // Braking power
+
+    public float minimumSpeed = 50;
 
     private float currentSpeed = 0f;
 
     private Rigidbody rigidbody;
 
-    public float initialYRotation;
+    private float initialYRotation;
     
     
     private Transform t;
@@ -47,7 +50,11 @@ public class PlayerDrivingTailgating : MonoBehaviour
         brakeInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
         // Calculate the acceleration force
         float accelerationForce = 0f;
-        if (currentSpeed > maxSpeed)
+        if (currentSpeed < minimumSpeed)
+        {
+            accelerationForce = Mathf.Lerp(0.3f, keepUpAcceleration, 1);
+        }
+        else if (currentSpeed > maxSpeed)
         {
             accelerationForce = 0;
             //Set the current speed back to maxSpeed
@@ -65,16 +72,19 @@ public class PlayerDrivingTailgating : MonoBehaviour
 
         // Calculate the braking force
         float brakingForce = brakeInput * brakePower;
-
-        // Ensure braking doesn't make the car go backward
-        if (currentSpeed <= 0f && brakeInput > 0f)
+        if (brakeInput > 0)
         {
-            brakingForce = 0f; // Prevent backward braking
-        }
-
-        // Apply the acceleration and braking to the car
-        rigidbody.AddRelativeForce(Vector3.forward * accelerationForce, ForceMode.Acceleration);
-        rigidbody.AddRelativeForce(Vector3.forward * -brakingForce, ForceMode.Acceleration); // Apply forward braking force
+            // Ensure braking doesn't make the car go backward
+            if (currentSpeed <= 0f && brakeInput > 0f)
+            {
+                brakingForce = 0f; // Prevent backward braking
+            }
+            rigidbody.AddRelativeForce(Vector3.forward * -brakingForce, ForceMode.Acceleration); // Apply forward braking force
+        } else
+        {
+            rigidbody.AddRelativeForce(Vector3.forward * accelerationForce, ForceMode.Acceleration);
+        }      
+        
     }
 
 

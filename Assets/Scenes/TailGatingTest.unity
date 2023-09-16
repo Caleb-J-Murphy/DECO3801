@@ -243,8 +243,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDriveTime: 15
   maxDriveTime: 30
-  maxSpeed: 10
+  maxSpeed: 50
+  maxAcceleration: 6
   brakeForce: 40
+  isDriving: 1
   initialYRotation: 0
 --- !u!65 &181165746
 BoxCollider:
@@ -1020,11 +1022,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ec94af66d9bb046b48c04daddbc295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 1
-  maxAcceleration: 2
+  maxSpeed: 60
+  maxAcceleration: 8
+  keepUpAcceleration: 6
   maxDeceleration: 4
-  brakePower: 10
-  initialYRotation: 0
+  brakePower: 3
+  minimumSpeed: 50
 --- !u!4 &1687123449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 81835658bbd378143a0f525b8552f557, type: 3}
@@ -1086,6 +1089,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2310280056116553937, guid: 0f76f547e9959f247a2424b0c9d817fc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163314135240895916, guid: 0f76f547e9959f247a2424b0c9d817fc, type: 3}
+      propertyPath: spawnOffset.z
+      value: -140
+      objectReference: {fileID: 0}
     - target: {fileID: 9017896900233549554, guid: 0f76f547e9959f247a2424b0c9d817fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
