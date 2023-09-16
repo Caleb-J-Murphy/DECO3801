@@ -26,8 +26,6 @@ public class TriggerSpawn : MonoBehaviour
 
             Transform cloneTrigger = cloneTransform.GetChild(3);
 
-            Debug.Log(cloneTrigger.name); //This is the child
-
             if (cloneTrigger != null)
             {
                 TriggerSpawn childTriggerSpawn = cloneTrigger.GetComponent<TriggerSpawn>();
