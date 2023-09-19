@@ -34,6 +34,7 @@ public class ForwardCar : MonoBehaviour
     {
         carRigidbody = GetComponent<Rigidbody>();
         carRigidbody.centerOfMass = Vector3.zero; // Adjust the center of mass if needed
+        Destroy(gameObject, 20);
     }
 
     private void Update()
