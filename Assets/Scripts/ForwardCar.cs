@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class ForwardCar : MonoBehaviour
 {
     [Header("Wheel Colliders")]
     public WheelCollider frontLeftWheel;
@@ -39,15 +39,15 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         // Input handling
-   
-        motorInput = Input.GetAxis("Vertical");
+        motorInput = 1000f;
+        // motorInput = Input.GetAxis("Vertical");
         steeringInput = Input.GetAxis("Horizontal");
         brakeInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
     }
 
     private void FixedUpdate()
     {
-        
+
 
         // Apply motor torque to the wheels
         frontLeftWheel.motorTorque = maxMotorTorque * motorInput;
@@ -80,7 +80,7 @@ public class CarController : MonoBehaviour
         frontRightWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
 
         steetingWheelTransform.localRotation = Quaternion.Euler(0, 0, steerRotation * -2);
-           
+
         //Update wheel transforms
         //UpdateWheelTransform(frontLeftWheel, frontLeftWheelTransform);
         //UpdateWheelTransform(frontRightWheel, frontRightWheelTransform);
