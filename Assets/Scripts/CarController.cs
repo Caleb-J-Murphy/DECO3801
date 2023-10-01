@@ -58,15 +58,16 @@ public class CarController : MonoBehaviour
         frontRightWheel.steerAngle = steerAngle;
 
         // Apply braking force to all wheels
-        if (brakeInput > 0f)
-        {
+
+        if (motorInput < 0f ) {
+            //braking
             frontLeftWheel.brakeTorque = brakeForce;
             frontRightWheel.brakeTorque = brakeForce;
             rearLeftWheel.brakeTorque = brakeForce;
             rearRightWheel.brakeTorque = brakeForce;
-        }
-        else
+        } else
         {
+            //not braking
             frontLeftWheel.brakeTorque = 0f;
             frontRightWheel.brakeTorque = 0f;
             rearLeftWheel.brakeTorque = 0f;
