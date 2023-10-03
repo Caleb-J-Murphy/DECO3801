@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -39,40 +40,26 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         // Input handling
-        motorInput = Input.GetAxis("Vertical");
+        motorInput = Input.GetAxis("Vertical") + 1;
         steeringInput = Input.GetAxis("Horizontal");
-        brakeInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
+        brakeInput = Input.GetAxis("Brake");
     }
 
     private void FixedUpdate()
     {
-        
-
         // Apply motor torque to the wheels
         frontLeftWheel.motorTorque = maxMotorTorque * motorInput;
         frontRightWheel.motorTorque = maxMotorTorque * motorInput;
+
+        frontLeftWheel.brakeTorque = brakeForce * brakeInput;
+        frontRightWheel.brakeTorque = brakeForce * brakeInput;
+        rearLeftWheel.brakeTorque = brakeForce * brakeInput;
+        rearRightWheel.brakeTorque = brakeForce * brakeInput;
 
         // Apply steering angle to the front wheels
         float steerAngle = maxSteeringAngle * steeringInput;
         frontLeftWheel.steerAngle = steerAngle;
         frontRightWheel.steerAngle = steerAngle;
-
-        // Apply braking force to all wheels
-
-        if (motorInput < 0f ) {
-            //braking
-            frontLeftWheel.brakeTorque = brakeForce;
-            frontRightWheel.brakeTorque = brakeForce;
-            rearLeftWheel.brakeTorque = brakeForce;
-            rearRightWheel.brakeTorque = brakeForce;
-        } else
-        {
-            //not braking
-            frontLeftWheel.brakeTorque = 0f;
-            frontRightWheel.brakeTorque = 0f;
-            rearLeftWheel.brakeTorque = 0f;
-            rearRightWheel.brakeTorque = 0f;
-        }
 
         // Apply steering rotation to the wheel models
         float steerRotation = maxSteeringAngle * steeringInput;
