@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnCar : MonoBehaviour
 {
 
-    public GameObject spawnItem;
+    public GameObject[] spawnItems;
 
     public float frequency;
 
@@ -27,7 +27,8 @@ public class SpawnCar : MonoBehaviour
 
     public void Spawn()
     {
-        GameObject newSpawnedObject = Instantiate(spawnItem, transform.position, Quaternion.Euler(0, Rotation, 0));
+        int randomIndex = Random.Range(0, spawnItems.Length);
+        GameObject newSpawnedObject = Instantiate(spawnItems[randomIndex], transform.position, Quaternion.Euler(0, Rotation, 0));
   
     }
 }
