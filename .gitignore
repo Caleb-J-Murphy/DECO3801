@@ -76,3 +76,4 @@ crashlytics-build.properties
 
 # Crash logs
 mono_crash.*
+.DS_Store
