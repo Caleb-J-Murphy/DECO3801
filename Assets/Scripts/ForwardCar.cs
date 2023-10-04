@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class ForwardCar : MonoBehaviour
 {
     [Header("Wheel Colliders")]
     public WheelCollider frontLeftWheel;
@@ -16,8 +16,8 @@ public class CarController : MonoBehaviour
     public Transform rearLeftWheelTransform;
     public Transform rearRightWheelTransform;
 
-    //[Header("Steering Wheel Rec Transform")]
-    //public RectTransform steetingWheelTransform;
+    [Header("Steering Wheel Rec Transform")]
+    public RectTransform steetingWheelTransform;
 
     [Header("Car Parameters")]
     public float maxMotorTorque = 300f;
@@ -34,20 +34,21 @@ public class CarController : MonoBehaviour
     {
         carRigidbody = GetComponent<Rigidbody>();
         carRigidbody.centerOfMass = Vector3.zero; // Adjust the center of mass if needed
+   
     }
 
     private void Update()
     {
         // Input handling
-   
-        motorInput = Input.GetAxis("Vertical");
+        motorInput = 1000f;
+        // motorInput = Input.GetAxis("Vertical");
         steeringInput = Input.GetAxis("Horizontal");
         brakeInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
     }
 
     private void FixedUpdate()
     {
-        
+
 
         // Apply motor torque to the wheels
         frontLeftWheel.motorTorque = maxMotorTorque * motorInput;
@@ -79,8 +80,8 @@ public class CarController : MonoBehaviour
         frontLeftWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
         frontRightWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
 
-        //steetingWheelTransform.localRotation = Quaternion.Euler(0, 0, steerRotation * -2);
-           
+        steetingWheelTransform.localRotation = Quaternion.Euler(0, 0, steerRotation * -2);
+
         //Update wheel transforms
         //UpdateWheelTransform(frontLeftWheel, frontLeftWheelTransform);
         //UpdateWheelTransform(frontRightWheel, frontRightWheelTransform);
