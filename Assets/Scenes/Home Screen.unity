@@ -458,7 +458,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747827697ae560e428219d4596a5621b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnItems: []
+  spawnItems:
+  - {fileID: 4710807959670702459, guid: 067eb77c6a1ef2e439b61765ac52c8b6, type: 3}
+  - {fileID: 6724314363143745787, guid: f33d79849e1f1e8468724bbe5995ec5d, type: 3}
+  - {fileID: 2374035827227464522, guid: 98acea39984fa5a4086687d8f53ed292, type: 3}
+  - {fileID: 3774940440911506190, guid: cbe371e37309fd7429e839dbb8e88a9c, type: 3}
+  - {fileID: 4826345327798121518, guid: 924baf0cbbd7d474d961012e083c50e1, type: 3}
   frequency: 5
   Rotation: 180
 --- !u!54 &221582201
@@ -1824,7 +1829,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.6, y: -17.3, z: -21.9}
-  m_LocalScale: {x: 105.7, y: 41.64, z: 0.94}
+  m_LocalScale: {x: 109.09, y: 44, z: 2.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
