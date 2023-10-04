@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class SpeedMonitor : MonoBehaviour
 {
     public Rigidbody carRigidbody;
+    public CarController carController;
     public Text speedText;
 
     private void Update()
@@ -15,6 +16,6 @@ public class SpeedMonitor : MonoBehaviour
         float speedKPH = carRigidbody.velocity.magnitude * 3.6f;
 
         // Update the speed text
-        speedText.text = "Speed: " + speedKPH.ToString("F1") + " km/h";
+        speedText.text = "Speed: " + speedKPH.ToString("F1") + " km/h " + "Gear: " + carController.currentGear;
     }
 }
