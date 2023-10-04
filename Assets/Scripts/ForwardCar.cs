@@ -16,8 +16,7 @@ public class ForwardCar : MonoBehaviour
     public Transform rearLeftWheelTransform;
     public Transform rearRightWheelTransform;
 
-    [Header("Steering Wheel Rec Transform")]
-    public RectTransform steetingWheelTransform;
+
 
     [Header("Car Parameters")]
     public float maxMotorTorque = 300f;
@@ -80,7 +79,7 @@ public class ForwardCar : MonoBehaviour
         frontLeftWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
         frontRightWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
 
-        steetingWheelTransform.localRotation = Quaternion.Euler(0, 0, steerRotation * -2);
+        
 
         //Update wheel transforms
         //UpdateWheelTransform(frontLeftWheel, frontLeftWheelTransform);
