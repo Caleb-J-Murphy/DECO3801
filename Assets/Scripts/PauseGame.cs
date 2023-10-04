@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class PauseGame : MonoBehaviour
 {
+    public GameObject pauseMenu;
     private bool isPaused = false;
+
+    private void Start() {
+        pauseMenu.active = false;
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) // Change 'P' to the desired key to trigger the pause.
+        if (Input.GetKeyDown(KeyCode.B)) //The seatbelt
         {
             if (isPaused)
             {
                 ResumeGame();
+                pauseMenu.active = false;
             }
             else
             {
                 Pause();
+                pauseMenu.active = true;
             }
         }
     }
