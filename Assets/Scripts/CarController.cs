@@ -21,18 +21,18 @@ public class CarController : MonoBehaviour
     //public RectTransform steetingWheelTransform;
 
     [Header("Car Parameters")]
-    public float maxMotorTorque = 300f;
+    public float maxMotorTorque = 3000f;
     public float maxSteeringAngle = 30f;
     public float brakeForce = 2000f;
     public string currentGear = "P";
 
     private float motorInput;
+    private float currentVelocity;
+    private float velocityFactor;
     private float steeringInput;
     private float brakeInput;
 
     private Rigidbody carRigidbody;
-
-    
 
     private void Start()
     {
@@ -43,10 +43,13 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         // Input handling
-        motorInput = Input.GetAxis("Vertical") + 1;
+        motorInput = Input.GetAxis("Vertical");
         steeringInput = Input.GetAxis("Horizontal");
         brakeInput = Input.GetAxis("Brake");
         
+        currentVelocity = carRigidbody.velocity.magnitude;
+        velocityFactor = 100f / (1f + Mathf.Pow(currentVelocity, 2));
+
         GetCurrentGear();
     }
 
@@ -55,13 +58,14 @@ public class CarController : MonoBehaviour
         switch (currentGear)
         {
             case "D":
-                frontLeftWheel.motorTorque = maxMotorTorque * motorInput;
-                frontRightWheel.motorTorque = maxMotorTorque * motorInput;
+                // print(string.Format("{0}", frontLeftWheel.motorTorque));
+                frontLeftWheel.motorTorque = maxMotorTorque * motorInput * velocityFactor;
+                frontRightWheel.motorTorque = maxMotorTorque * motorInput * velocityFactor;
                 break;
 
             case "R":
-                frontLeftWheel.motorTorque = maxMotorTorque * -1f * motorInput;
-                frontRightWheel.motorTorque = maxMotorTorque * -1f * motorInput;
+                frontLeftWheel.motorTorque = maxMotorTorque * -1f * motorInput * velocityFactor;
+                frontRightWheel.motorTorque = maxMotorTorque * -1f * motorInput * velocityFactor;
                 break;
 
             case "P":
@@ -78,8 +82,6 @@ public class CarController : MonoBehaviour
         frontRightWheel.brakeTorque = brakeForce * brakeInput;
         rearLeftWheel.brakeTorque = brakeForce * brakeInput;
         rearRightWheel.brakeTorque = brakeForce * brakeInput;
-
-        
 
         // Apply steering angle to the front wheels
         float steerAngle = maxSteeringAngle * steeringInput;
