@@ -90,14 +90,6 @@ public class CarController : MonoBehaviour
         float steerRotation = maxSteeringAngle * steeringInput;
         frontLeftWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
         frontRightWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
-
-        //steetingWheelTransform.localRotation = Quaternion.Euler(0, 0, steerRotation * -2);
-           
-        //Update wheel transforms
-        //UpdateWheelTransform(frontLeftWheel, frontLeftWheelTransform);
-        //UpdateWheelTransform(frontRightWheel, frontRightWheelTransform);
-        //UpdateWheelTransform(rearLeftWheel, rearLeftWheelTransform);
-        //UpdateWheelTransform(rearRightWheel, rearRightWheelTransform);
     }
 
     private void UpdateWheelTransform(WheelCollider wheelCollider, Transform wheelTransform)
