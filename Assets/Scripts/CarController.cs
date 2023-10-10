@@ -27,12 +27,12 @@ public class CarController : MonoBehaviour
     public string currentGear = "P";
 
     private float motorInput;
+    private float currentVelocity;
+    private float velocityFactor;
     private float steeringInput;
     private float brakeInput;
 
     private Rigidbody carRigidbody;
-
-    
 
     private void Start()
     {
@@ -47,6 +47,9 @@ public class CarController : MonoBehaviour
         steeringInput = Input.GetAxis("Horizontal");
         brakeInput = Input.GetAxis("Brake");
         
+        currentVelocity = carRigidbody.velocity.magnitude;
+        velocityFactor = 1f / (1f + Mathf.Pow(currentVelocity, 2));
+
         GetCurrentGear();
     }
 
@@ -55,8 +58,9 @@ public class CarController : MonoBehaviour
         switch (currentGear)
         {
             case "D":
-                frontLeftWheel.motorTorque = maxMotorTorque * motorInput;
-                frontRightWheel.motorTorque = maxMotorTorque * motorInput;
+                print(string.Format("{0}", frontLeftWheel.motorTorque));
+                frontLeftWheel.motorTorque = maxMotorTorque * motorInput * velocityFactor;
+                frontRightWheel.motorTorque = maxMotorTorque * motorInput * velocityFactor;
                 break;
 
             case "R":
