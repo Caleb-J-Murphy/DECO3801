@@ -8,6 +8,7 @@ public class ChunkLoading : MonoBehaviour
     public Transform startPoint, endPoint;
     public Transform cameraTransform;
     public GameObject prefabRef;
+    public int newChunks; // how many additional chunks to create?
 
     private List<GameObject> allChunks;
     private float prefabLength, nextZ;
@@ -38,7 +39,7 @@ public class ChunkLoading : MonoBehaviour
         }
 
         if (cameraTransform != null &&
-            allChunks.Count <= 3 &&
+            allChunks.Count <= newChunks &&
             Mathf.Abs(cameraTransform.transform.position.z - prefabLength) <= Mathf.Abs(nextZ)) {
             prevChunk = Instantiate(prefabRef, new Vector3(prevChunk.transform.position.x, prevChunk.transform.position.y, nextZ), Quaternion.identity);
             allChunks.Add(prevChunk);
