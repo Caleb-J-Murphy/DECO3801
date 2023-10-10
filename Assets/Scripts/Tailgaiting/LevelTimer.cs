@@ -2,13 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class LevelTimer : MonoBehaviour
 {
+    [Header("Timer Settings")]
     public string beginning = "Footy Starts In: ";
     public float seconds = 60;
 
-    public TextMeshProUGUI textMeshPro; // Assign your TextMeshPro component directly in the Inspector
+    public Text text; // Assign your text component directly in the Inspector
+
+    [Header("Flash Settings")]
+    public PostProcessVolume postProcessVolume;
+    public PostProcessProfile normalProfile;
+    public PostProcessProfile flashProfile;
+    
+    private bool isFlashing = false;
+    private float flashDuration = 0.4f; // Adjust the duration of the flash (in seconds)
 
     private void Start()
     {
@@ -18,14 +29,22 @@ public class LevelTimer : MonoBehaviour
 
     private void StartCountdown()
     {
-        // Update the TextMeshPro text to display the initial message
-        textMeshPro.text = beginning + seconds.ToString();
+        // Ensure text is assigned before using it
+        if (text != null)
+        {
+            // Update the text text to display the initial message
+            text.text = beginning + seconds.ToString();
 
-        // Start a coroutine to countdown the seconds
-        StartCoroutine(CountdownCoroutine());
+            // Start a coroutine to countdown the seconds
+            StartCoroutine(CountdownCoroutine());
+        }
+        else
+        {
+            Debug.LogError("text component is not assigned. Please assign it in the Inspector.");
+        }
     }
 
-    private System.Collections.IEnumerator CountdownCoroutine()
+    private IEnumerator CountdownCoroutine()
     {
         while (seconds > 0)
         {
@@ -35,11 +54,38 @@ public class LevelTimer : MonoBehaviour
             // Decrease the seconds by 1
             seconds--;
 
-            // Update the TextMeshPro text to display the new countdown value
-            textMeshPro.text = beginning + seconds.ToString();
-        }
+            // Update the text text to display the new countdown value
+            text.text = beginning + seconds.ToString();
 
-        // When the countdown is complete, you can perform any desired actions
-        // For example, you can display a message or start the game.
+            // Check if the countdown is below 10 seconds to activate the flash effect
+            if (seconds < 10)
+            {
+                if (!isFlashing)
+                {
+                    StartFlashEffect();
+                }
+            }
+        }
+    }
+
+    private void StartFlashEffect()
+    {
+        StartCoroutine(FlashEffectCoroutine());
+    }
+
+    private IEnumerator FlashEffectCoroutine()
+    {
+        isFlashing = true;
+
+        // Activate the Post-Processing Profile with the flash effect
+        postProcessVolume.profile = flashProfile;
+
+        // Wait for the flash duration
+        yield return new WaitForSeconds(flashDuration);
+
+        // Switch back to the normal Post-Processing Profile
+        postProcessVolume.profile = normalProfile;
+
+        isFlashing = false;
     }
 }
