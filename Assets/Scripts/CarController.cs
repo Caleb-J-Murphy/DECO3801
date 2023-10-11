@@ -11,6 +11,9 @@ public class CarController : MonoBehaviour
     public WheelCollider rearLeftWheel;
     public WheelCollider rearRightWheel;
 
+    [Header("Steering Wheel")]
+    public Transform steeringWheel;
+
     [Header("Front Wheel Transforms")]
     public Transform frontLeftWheelTransform;
     public Transform frontRightWheelTransform;
@@ -28,7 +31,9 @@ public class CarController : MonoBehaviour
     public float accelerationSlowdownVelocity = 5.0f;  // Velocity at which acceleration starts slowing down
     public float speedCap = 10.0f;  // Velocity at which acceleration is capped
     public bool isCrashed = false;
+    public float steeringWheelRotationSpeed = 100f;
 
+    private float totalSteeringWheelRotation = 0f;
     private float motorInput;
     private float currentVelocity;
     private float velocityFactor;
@@ -59,8 +64,33 @@ public class CarController : MonoBehaviour
             velocityFactor = 100f / (1f + Mathf.Pow(currentVelocity, 2));
 
             GetCurrentGear();
+            //
         }
 
+    }
+
+    private void RotateSteeringWheel()
+    {
+        float rotation = steeringInput * steeringWheelRotationSpeed * Time.deltaTime;
+
+        if (isCrashed || currentGear != "D") {
+            return;
+        }
+
+        if (rotation != 0) {
+            totalSteeringWheelRotation += rotation;
+            totalSteeringWheelRotation = Mathf.Clamp(totalSteeringWheelRotation, -120f, 120f);
+        } else {
+            if (totalSteeringWheelRotation < 0) {
+                totalSteeringWheelRotation += 1.5f * steeringWheelRotationSpeed * Time.deltaTime;
+                totalSteeringWheelRotation = Mathf.Clamp(totalSteeringWheelRotation, -120f, 0f);
+            } else if (totalSteeringWheelRotation > 0) {
+                totalSteeringWheelRotation -= 1.5f * steeringWheelRotationSpeed * Time.deltaTime;
+                totalSteeringWheelRotation = Mathf.Clamp(totalSteeringWheelRotation, 0f, 120f);
+            }
+        }
+
+        steeringWheel.localRotation = Quaternion.Euler(0, totalSteeringWheelRotation, 0);
     }
 
     private void FixedUpdate()
@@ -109,6 +139,8 @@ public class CarController : MonoBehaviour
         float steerRotation = maxSteeringAngle * steeringInput;
         frontLeftWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
         frontRightWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
+
+        RotateSteeringWheel();
     }
 
     private void OnCollisionEnter(Collision collision)
