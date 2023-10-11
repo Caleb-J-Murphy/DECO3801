@@ -27,6 +27,7 @@ public class CarController : MonoBehaviour
     public string currentGear = "P";
     public float accelerationSlowdownVelocity = 5.0f;  // Velocity at which acceleration starts slowing down
     public float speedCap = 10.0f;  // Velocity at which acceleration is capped
+    public bool isCrashed = false;
 
     private float motorInput;
     private float currentVelocity;
@@ -35,6 +36,10 @@ public class CarController : MonoBehaviour
     private float brakeInput;
 
     private Rigidbody carRigidbody;
+    public Renderer meshRenderer;
+    public Material mirror;
+    public Material mirrorCracked;
+
 
     private void Start()
     {
@@ -44,13 +49,18 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        // Input handling
-        motorInput = Input.GetAxis("Vertical");
-        steeringInput = Input.GetAxis("Horizontal");
-        brakeInput = Input.GetAxis("Brake");
+        if (!isCrashed) {
+            // Input handling
+            motorInput = Input.GetAxis("Vertical");
+            steeringInput = Input.GetAxis("Horizontal");
+            brakeInput = Input.GetAxis("Brake");
+            
+            currentVelocity = carRigidbody.velocity.magnitude;
+            velocityFactor = 100f / (1f + Mathf.Pow(currentVelocity, 2));
+
+            GetCurrentGear();
+        }
         
-        currentVelocity = carRigidbody.velocity.magnitude;
-        GetCurrentGear();
     }
 
     private void FixedUpdate()
@@ -99,6 +109,27 @@ public class CarController : MonoBehaviour
         float steerRotation = maxSteeringAngle * steeringInput;
         frontLeftWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
         frontRightWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("crashed");
+        isCrashed = true;
+        currentGear = "N";
+
+        // Find the "mirror" material and change it to "mirror_cracked"
+        Material[] materials = meshRenderer.materials;
+    
+        for (int i = 0; i < materials.Length; i++)
+        {
+            if (materials[i].name.StartsWith(mirror.name.Split(' ')[0]))
+            {
+                materials[i] = mirrorCracked;
+                break;
+            }
+        }
+        
+        meshRenderer.materials = materials;
     }
 
     private void UpdateWheelTransform(WheelCollider wheelCollider, Transform wheelTransform)
