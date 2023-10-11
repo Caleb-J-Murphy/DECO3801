@@ -13,18 +13,14 @@ public class PauseGame : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B)) //The seatbelt
+        if (Input.GetKeyDown(KeyCode.B) && isPaused)
         {
-            if (isPaused)
-            {
-                ResumeGame();
-                pauseMenu.active = false;
-            }
-            else
-            {
-                Pause();
-                pauseMenu.active = true;
-            }
+            ResumeGame();
+            pauseMenu.active = false;
+        } 
+        if (Input.GetKeyDown(KeyCode.U) && !isPaused) {
+            Pause();
+            pauseMenu.active = true;
         }
     }
 
