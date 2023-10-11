@@ -2286,7 +2286,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600627899}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 747827697ae560e428219d4596a5621b, type: 3}
   m_Name: 
@@ -2890,7 +2890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1872681591019976877, guid: 98acea39984fa5a4086687d8f53ed292, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.621162
+      value: -35.6
       objectReference: {fileID: 0}
     - target: {fileID: 1872681591019976877, guid: 98acea39984fa5a4086687d8f53ed292, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2980,6 +2980,10 @@ PrefabInstance:
     - target: {fileID: 6724314363143745787, guid: f33d79849e1f1e8468724bbe5995ec5d, type: 3}
       propertyPath: m_Name
       value: Vehicle_Car_separate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623490409859676463, guid: f33d79849e1f1e8468724bbe5995ec5d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
