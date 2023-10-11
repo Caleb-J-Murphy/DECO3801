@@ -73,7 +73,7 @@ public class CarController : MonoBehaviour
     {
         float rotation = steeringInput * steeringWheelRotationSpeed * Time.deltaTime;
 
-        if (isCrashed || currentGear != "D") {
+        if (isCrashed || (currentGear != "D" && currentGear != "R")) {
             return;
         }
 
