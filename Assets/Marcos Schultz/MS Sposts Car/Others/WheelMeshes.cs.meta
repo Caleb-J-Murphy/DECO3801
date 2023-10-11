@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 69cd10cef1388ad42a2e0bc881658d70
+timeCreated: 1556839301
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 145412
+  packageName: MS Sports Car
+  packageVersion: 1.0.1
+  assetPath: Assets/Marcos Schultz/MS Sposts Car/Others/WheelMeshes.cs
+  uploadId: 426195
