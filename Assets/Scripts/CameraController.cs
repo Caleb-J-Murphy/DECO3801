@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FOVAdjuster : MonoBehaviour
+public class CameraControl : MonoBehaviour
 {
-    public Rigidbody carRigidbody;
+    public Rigidbody carRigidbody; 
     public Camera mainCamera;
     public float baseFOV = 73;
     public float maxSpeed = 100;
