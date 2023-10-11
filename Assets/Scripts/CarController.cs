@@ -26,7 +26,7 @@ public class CarController : MonoBehaviour
     public float brakeForce = 2000f;
     public string currentGear = "P";
     public float accelerationSlowdownVelocity = 5.0f;  // Velocity at which acceleration starts slowing down
-    public float accelerationCap = 10.0f;  // Velocity at which acceleration is capped
+    public float speedCap = 10.0f;  // Velocity at which acceleration is capped
 
     private float motorInput;
     private float currentVelocity;
@@ -61,7 +61,7 @@ public class CarController : MonoBehaviour
                 // Calculate acceleration based on current speed
                 float acceleration = CalculateAcceleration();
 
-                if (motorInput < 0.2 || currentVelocity > accelerationCap * 0.26) {
+                if (motorInput < 0.2 || currentVelocity > speedCap * 0.26) {
                     acceleration = 0;
                     brakeInput = 0.5f;
                 }
@@ -138,14 +138,14 @@ public class CarController : MonoBehaviour
         float inverseLogAcceleration = maxMotorTorque / Mathf.Log(currentVelocity + 1);
 
         // Cap the acceleration when reaching a certain speed
-        if (currentVelocity > accelerationCap * 0.26)
+        if (currentVelocity > speedCap * 0.26)
         {
-            Debug.Log("We hit a cap, CV = " + (currentVelocity * 0.26) + " --- Acc Cap: " + accelerationCap);
+            Debug.Log("We hit a cap, CV = " + (currentVelocity * 0.26) + " --- Acc Cap: " + speedCap);
             inverseLogAcceleration = 0.0f;
         }
         
-        // Calculate a deceleration factor as you approach the accelerationCap
-        float decelerationFactor = 1 - (currentVelocity / accelerationCap);
+        // Calculate a deceleration factor as you approach the speedCap
+        float decelerationFactor = 1 - (currentVelocity / speedCap);
 
         // Adjust the acceleration based on the deceleration factor
         float finalAcceleration = inverseLogAcceleration * decelerationFactor;
