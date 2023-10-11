@@ -54,13 +54,13 @@ public class CarController : MonoBehaviour
             motorInput = Input.GetAxis("Vertical");
             steeringInput = Input.GetAxis("Horizontal");
             brakeInput = Input.GetAxis("Brake");
-            
+
             currentVelocity = carRigidbody.velocity.magnitude;
             velocityFactor = 100f / (1f + Mathf.Pow(currentVelocity, 2));
 
             GetCurrentGear();
         }
-        
+
     }
 
     private void FixedUpdate()
@@ -77,7 +77,7 @@ public class CarController : MonoBehaviour
                 }
                 frontLeftWheel.motorTorque = maxMotorTorque * motorInput * acceleration;
                 frontRightWheel.motorTorque = maxMotorTorque * motorInput * acceleration;
-                
+
                 break;
 
             case "R":
@@ -119,7 +119,7 @@ public class CarController : MonoBehaviour
 
         // Find the "mirror" material and change it to "mirror_cracked"
         Material[] materials = meshRenderer.materials;
-    
+
         for (int i = 0; i < materials.Length; i++)
         {
             if (materials[i].name.StartsWith(mirror.name.Split(' ')[0]))
@@ -128,7 +128,7 @@ public class CarController : MonoBehaviour
                 break;
             }
         }
-        
+
         meshRenderer.materials = materials;
     }
 
@@ -174,7 +174,7 @@ public class CarController : MonoBehaviour
             Debug.Log("We hit a cap, CV = " + (currentVelocity * 0.26) + " --- Acc Cap: " + speedCap);
             inverseLogAcceleration = 0.0f;
         }
-        
+
         // Calculate a deceleration factor as you approach the speedCap
         float decelerationFactor = 1 - (currentVelocity / speedCap);
 
