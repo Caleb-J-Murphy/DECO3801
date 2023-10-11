@@ -1268,7 +1268,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 430285119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827fa9244763c294b95adb7dd2db4358, type: 3}
+  m_Script: {fileID: 11500000, guid: fb89ad6ce0d2974f4b7c0950ee14dc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   frontLeftWheel: {fileID: 1124755876}
@@ -1282,6 +1282,9 @@ MonoBehaviour:
   maxMotorTorque: 3000
   maxSteeringAngle: 30
   brakeForce: 2000
+  currentGear: P
+  accelerationSlowdownVelocity: 5
+  accelerationCap: 10
 --- !u!95 &430285123
 Animator:
   serializedVersion: 5
@@ -4434,6 +4437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carRigidbody: {fileID: 430285121}
+  carController: {fileID: 430285122}
   speedText: {fileID: 1463742166}
 --- !u!114 &1817038619
 MonoBehaviour:
@@ -5053,7 +5057,7 @@ PrefabInstance:
     - target: {fileID: 4972452993523603484, guid: 09a211aa590ddffe78c662f031b7ab57, type: 3}
       propertyPath: prefabRef
       value: 
-      objectReference: {fileID: 3038306625511266989, guid: 09a211aa590ddffe78c662f031b7ab57, type: 3}
+      objectReference: {fileID: 129839085521162228, guid: 09a211aa590ddffe78c662f031b7ab57, type: 3}
     - target: {fileID: 4972452993523603484, guid: 09a211aa590ddffe78c662f031b7ab57, type: 3}
       propertyPath: cameraTransform
       value: 
