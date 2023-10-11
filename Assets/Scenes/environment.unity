@@ -3285,7 +3285,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Speed: 0.0km/h Gear: '
+  m_Text: 'Speed: 0 km/h Gear: P'
 --- !u!222 &1463742167
 CanvasRenderer:
   m_ObjectHideFlags: 0
