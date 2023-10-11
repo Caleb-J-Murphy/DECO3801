@@ -61,13 +61,13 @@ public class CarController : MonoBehaviour
                 // Calculate acceleration based on current speed
                 float acceleration = CalculateAcceleration();
 
-                if (motorInput < 0.2) {
+                if (motorInput < 0.2 || currentVelocity > accelerationCap * 0.26) {
                     acceleration = 0;
                     brakeInput = 0.5f;
                 }
-                
                 frontLeftWheel.motorTorque = maxMotorTorque * motorInput * acceleration;
                 frontRightWheel.motorTorque = maxMotorTorque * motorInput * acceleration;
+                
                 break;
 
             case "R":
@@ -132,15 +132,15 @@ public class CarController : MonoBehaviour
 
     private float CalculateAcceleration()
     {
-        // Define the parameters for the inverse logarithmic function
-        float accelerationCap = 20.0f; // Maximum speed at which acceleration is capped
+        currentVelocity = carRigidbody.velocity.magnitude;
 
         // Calculate acceleration using the inverse log function
         float inverseLogAcceleration = maxMotorTorque / Mathf.Log(currentVelocity + 1);
 
         // Cap the acceleration when reaching a certain speed
-        if (currentVelocity > accelerationCap)
+        if (currentVelocity > accelerationCap * 0.26)
         {
+            Debug.Log("We hit a cap, CV = " + (currentVelocity * 0.26) + " --- Acc Cap: " + accelerationCap);
             inverseLogAcceleration = 0.0f;
         }
         

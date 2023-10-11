@@ -6,12 +6,9 @@ public class FOVAdjuster : MonoBehaviour
 {
     public Rigidbody carRigidbody;
     public Camera mainCamera;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    public float baseFOV = 73;
+    public float maxSpeed = 100;
+    public float maxFovIncrease = 0.3f;
 
     void Update() 
     {
@@ -21,9 +18,7 @@ public class FOVAdjuster : MonoBehaviour
     // Update is called once per frame
     private void UpdateCameraFOV()
     {
-        float baseFOV = 85f;  // Set to your desired base FOV
         float velocity = carRigidbody.velocity.magnitude;
-        float fovFactor = 1f;  // Set to control how much the FOV changes with velocity
-        mainCamera.fieldOfView = baseFOV + (velocity * fovFactor);
+        mainCamera.fieldOfView = baseFOV + maxFovIncrease * (velocity / maxSpeed);
     }   
 }
