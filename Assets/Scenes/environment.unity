@@ -844,7 +844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 255, y: 200}
+  m_AnchoredPosition: {x: -500, y: 200}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &215875953
@@ -1177,6 +1177,7 @@ GameObject:
   - component: {fileID: 430285122}
   - component: {fileID: 430285121}
   - component: {fileID: 430285124}
+  - component: {fileID: 430285125}
   m_Layer: 0
   m_Name: Vehicle_Car_separate
   m_TagString: Untagged
@@ -1261,7 +1262,7 @@ MonoBehaviour:
   brakeForce: 2000
   currentGear: P
   accelerationSlowdownVelocity: 20
-  accelerationCap: 10
+  accelerationCap: 100
 --- !u!95 &430285123
 Animator:
   serializedVersion: 5
@@ -1301,6 +1302,23 @@ MonoBehaviour:
   postProcessVolume: {fileID: 1948243157}
   normalProfile: {fileID: 11400000, guid: 512e53f074df6e6429daaa817e4c9117, type: 2}
   flashProfile: {fileID: 11400000, guid: f2d010163b891874db83f6ea43dd9842, type: 2}
+--- !u!114 &430285125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430285119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95791d63338b34fc2a7d9cae0ee488ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carRigidbody: {fileID: 430285121}
+  mainCamera: {fileID: 1948243160}
+  baseFOV: 74
+  maxSpeed: 100
+  maxFovIncrease: 16
 --- !u!1 &462592028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1451,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1570,7 +1588,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2064,7 +2082,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2352,7 +2370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -255, y: 200}
+  m_AnchoredPosition: {x: -500, y: 300}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1229986942
@@ -2419,14 +2437,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330016916}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5022249, y: -0.4787187, z: 0.5057114, w: -0.5126934}
+  m_LocalRotation: {x: -0.49971288, y: 0.47617692, z: -0.50819194, w: 0.5150569}
   m_LocalPosition: {x: -1.293, y: 1.8866, z: 1.438}
   m_LocalScale: {x: 0.017551834, y: 0.03888444, z: -0.027900498}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2057794597}
   m_Father: {fileID: 430285120}
-  m_LocalEulerAnglesHint: {x: -1.764, y: 807.867, z: -90.914}
+  m_LocalEulerAnglesHint: {x: -1.764, y: 807.3, z: -90.914}
 --- !u!23 &1330016918
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3340,7 +3358,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4244,7 +4262,7 @@ Transform:
   m_GameObject: {fileID: 1948243155}
   serializedVersion: 2
   m_LocalRotation: {x: 0.100448556, y: 0, z: 0, w: 0.99494225}
-  m_LocalPosition: {x: -0.02, y: 2.13, z: 0.6}
+  m_LocalPosition: {x: -0.5, y: 2.13, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4368,7 +4386,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 74
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
