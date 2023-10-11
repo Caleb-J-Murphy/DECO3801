@@ -18,13 +18,15 @@ public class CarController : MonoBehaviour
     public Transform rearRightWheelTransform;
 
     //[Header("Steering Wheel Rec Transform")]
-    //public RectTransform steetingWheelTransform;
+    //public RectTransform steeringWheelTransform;
 
     [Header("Car Parameters")]
     public float maxMotorTorque = 3000f;
     public float maxSteeringAngle = 30f;
     public float brakeForce = 2000f;
     public string currentGear = "P";
+    public float accelerationSlowdownVelocity = 5.0f;  // Velocity at which acceleration starts slowing down
+    public float accelerationCap = 10.0f;  // Velocity at which acceleration is capped
 
     private float motorInput;
     private float currentVelocity;
@@ -48,8 +50,6 @@ public class CarController : MonoBehaviour
         brakeInput = Input.GetAxis("Brake");
         
         currentVelocity = carRigidbody.velocity.magnitude;
-        velocityFactor = 100f / (1f + Mathf.Pow(currentVelocity, 2));
-
         GetCurrentGear();
     }
 
@@ -58,9 +58,16 @@ public class CarController : MonoBehaviour
         switch (currentGear)
         {
             case "D":
-                // print(string.Format("{0}", frontLeftWheel.motorTorque));
-                frontLeftWheel.motorTorque = maxMotorTorque * motorInput * velocityFactor;
-                frontRightWheel.motorTorque = maxMotorTorque * motorInput * velocityFactor;
+                // Calculate acceleration based on current speed
+                float acceleration = CalculateAcceleration();
+
+                if (motorInput < 0.2) {
+                    acceleration = 0;
+                    brakeInput = 0.5f;
+                }
+                
+                frontLeftWheel.motorTorque = maxMotorTorque * motorInput * acceleration;
+                frontRightWheel.motorTorque = maxMotorTorque * motorInput * acceleration;
                 break;
 
             case "R":
@@ -69,7 +76,7 @@ public class CarController : MonoBehaviour
                 break;
 
             case "P":
-                brakeInput = 1; // full force break
+                brakeInput = 1; // full force brake
                 break;
 
             case "N":
@@ -119,8 +126,31 @@ public class CarController : MonoBehaviour
         }
         else if (Input.GetAxis("Neutral") > 0f)
         {
-           currentGear = "N";
+            currentGear = "N";
         }
     }
-}
 
+    private float CalculateAcceleration()
+    {
+        // Define the parameters for the inverse logarithmic function
+        float accelerationCap = 20.0f; // Maximum speed at which acceleration is capped
+
+        // Calculate acceleration using the inverse log function
+        float inverseLogAcceleration = maxMotorTorque / Mathf.Log(currentVelocity + 1);
+
+        // Cap the acceleration when reaching a certain speed
+        if (currentVelocity > accelerationCap)
+        {
+            inverseLogAcceleration = 0.0f;
+        }
+        
+        // Calculate a deceleration factor as you approach the accelerationCap
+        float decelerationFactor = 1 - (currentVelocity / accelerationCap);
+
+        // Adjust the acceleration based on the deceleration factor
+        float finalAcceleration = inverseLogAcceleration * decelerationFactor;
+
+        return finalAcceleration;
+    }
+
+}
