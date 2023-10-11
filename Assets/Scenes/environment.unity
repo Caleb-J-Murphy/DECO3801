@@ -516,7 +516,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: c8205ead17538f24da1f3be824da3d0d, type: 2}
   - {fileID: 2100000, guid: 27c1627742e5e374888e7694364558e7, type: 2}
-  - {fileID: 2100000, guid: 3927f4198424a456580a7bc2d8331b53, type: 2}
+  - {fileID: 2100000, guid: faac1cc71bec7e44694b1cf8ee3e043b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1261,6 +1261,10 @@ MonoBehaviour:
   maxSteeringAngle: 30
   brakeForce: 2000
   currentGear: P
+  isCrashed: 0
+  meshRenderer: {fileID: 165487986}
+  mirror: {fileID: 2100000, guid: faac1cc71bec7e44694b1cf8ee3e043b, type: 2}
+  mirrorCracked: {fileID: 2100000, guid: 3927f4198424a456580a7bc2d8331b53, type: 2}
   accelerationSlowdownVelocity: 20
   accelerationCap: 100
 --- !u!95 &430285123
