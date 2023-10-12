@@ -233,6 +233,8 @@ MonoBehaviour:
   maxMotorTorque: 300
   maxSteeringAngle: 30
   brakeForce: 2000
+  initialVelocity: 20
+  detectionRange: 30
 --- !u!1 &4293892013314392865
 GameObject:
   m_ObjectHideFlags: 0

@@ -391,6 +391,8 @@ MonoBehaviour:
   maxMotorTorque: 300
   maxSteeringAngle: 30
   brakeForce: 2000
+  initialVelocity: 20
+  detectionRange: 30
 --- !u!65 &4505981569535690052
 BoxCollider:
   m_ObjectHideFlags: 0

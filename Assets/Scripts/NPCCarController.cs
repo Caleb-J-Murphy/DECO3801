@@ -26,6 +26,9 @@ public class NPCCarController : MonoBehaviour
     private float steeringInput;
     private float brakeInput;
 
+    public float initialVelocity = 20f;
+    public float detectionRange = 30f;
+
     private Rigidbody carRigidbody;
     private bool ObstacleDetected = false;
     private Vector3 rayCollision = Vector3.zero;
@@ -34,14 +37,14 @@ public class NPCCarController : MonoBehaviour
     {
         carRigidbody = GetComponent<Rigidbody>();
 
-        carRigidbody.velocity = transform.forward * 20f; // give NPC cars an initial speed
+        carRigidbody.velocity = transform.forward * initialVelocity; // give NPC cars an initial speed
     }
 
     private void Update()
     {
         var ray = new Ray(this.transform.TransformPoint(new Vector3(0f, 1f, 3f)), this.transform.forward);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 30))
+        if (Physics.Raycast(ray, out hit, detectionRange))
         {
             ObstacleDetected = true;
             rayCollision = hit.point;
