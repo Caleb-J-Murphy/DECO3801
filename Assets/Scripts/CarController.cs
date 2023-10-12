@@ -45,6 +45,8 @@ public class CarController : MonoBehaviour
     public Material mirror;
     public Material mirrorCracked;
 
+    [Header("Screens")]
+    public GameObject loseScreen;
 
     private void Start()
     {
@@ -162,6 +164,9 @@ public class CarController : MonoBehaviour
         }
 
         meshRenderer.materials = materials;
+
+        loseScreen.SetActive(true);
+
     }
 
     private void UpdateWheelTransform(WheelCollider wheelCollider, Transform wheelTransform)

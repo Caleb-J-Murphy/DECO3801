@@ -21,6 +21,9 @@ public class LevelTimer : MonoBehaviour
     private bool isFlashing = false;
     private float flashDuration = 0.4f; // Adjust the duration of the flash (in seconds)
 
+    [Header("Screens")]
+    public GameObject timerLoseScreen;
+
     private void Start()
     {
         // Call a method to start the countdown
@@ -66,6 +69,7 @@ public class LevelTimer : MonoBehaviour
                 }
             }
         }
+        timerLoseScreen.SetActive(true);
     }
 
     private void StartFlashEffect()
