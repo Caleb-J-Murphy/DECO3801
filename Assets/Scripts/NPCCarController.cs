@@ -22,30 +22,36 @@ public class ForwardCar : MonoBehaviour
     public float maxMotorTorque = 300f;
     public float maxSteeringAngle = 30f;
     public float brakeForce = 2000f;
-
     private float motorInput;
     private float steeringInput;
     private float brakeInput;
 
     private Rigidbody carRigidbody;
-    public float destructYValue = -10f;  // Set the Y-value threshold for destruction
-
+    private bool ObstacleDetected = false;
 
     private void Start()
     {
         carRigidbody = GetComponent<Rigidbody>();
+
+        carRigidbody.velocity = transform.forward * 20f; // give NPC cars an initial speed
     }
 
     private void Update()
     {
         // Input handling
-        motorInput = 1f;
+        if (ObstacleDetected || Mathf.Abs(carRigidbody.velocity.z) > 60f) {
+            motorInput = 0f;
+            brakeInput = 1f;
+        } else {
+            motorInput = 1f;
+            brakeInput = 0f;
+        }
+        
 
-        if (transform.position.y < destructYValue)
+        if (transform.position.y < -10f)
         {
             Destroy(gameObject);
         }
-
     }
 
     private void FixedUpdate()
@@ -53,11 +59,6 @@ public class ForwardCar : MonoBehaviour
         // Apply motor torque to the wheels
         frontLeftWheel.motorTorque = maxMotorTorque * motorInput;
         frontRightWheel.motorTorque = maxMotorTorque * motorInput;
-
-        // Apply steering angle to the front wheels
-        float steerAngle = maxSteeringAngle * steeringInput;
-        frontLeftWheel.steerAngle = steerAngle;
-        frontRightWheel.steerAngle = steerAngle;
 
         // Apply braking force to all wheels
         if (brakeInput > 0f)
@@ -74,29 +75,15 @@ public class ForwardCar : MonoBehaviour
             rearLeftWheel.brakeTorque = 0f;
             rearRightWheel.brakeTorque = 0f;
         }
-
-        // Apply steering rotation to the wheel models
-        float steerRotation = maxSteeringAngle * steeringInput;
-        frontLeftWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
-        frontRightWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
-
-        
-
-        //Update wheel transforms
-        //UpdateWheelTransform(frontLeftWheel, frontLeftWheelTransform);
-        //UpdateWheelTransform(frontRightWheel, frontRightWheelTransform);
-        //UpdateWheelTransform(rearLeftWheel, rearLeftWheelTransform);
-        //UpdateWheelTransform(rearRightWheel, rearRightWheelTransform);
-
     }
 
-    private void UpdateWheelTransform(WheelCollider wheelCollider, Transform wheelTransform)
+    void OnTriggerEnter(Collider other)
     {
-        Vector3 position;
-        Quaternion rotation;
-        wheelCollider.GetWorldPose(out position, out rotation);
-        wheelTransform.position = position;
-        wheelTransform.rotation = rotation;
+        ObstacleDetected = true;
+    }
+
+    void OnTriggerExit(Collider other) {
+        ObstacleDetected = false;
     }
 }
 

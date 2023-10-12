@@ -74,5 +74,7 @@ MonoBehaviour:
   - {fileID: 3446418678030984161, guid: 246500d48fc5e0d4ca5eedbc9c8c7b26, type: 3}
   - {fileID: 3830514087053378977, guid: 40b3c70375bd203478790318e1d854aa, type: 3}
   frequency: 0
-  isFrequencyRandom: 0
+  playerCamera: {fileID: 0}
+  deleteRange: 100
+  isFrequencyRandom: 1
   Rotation: 0

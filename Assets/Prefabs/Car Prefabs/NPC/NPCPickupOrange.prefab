@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 4071152231871422803}
   - component: {fileID: 6387149772287931340}
   - component: {fileID: 6724357013876843347}
+  - component: {fileID: 7288590901958298448}
   m_Layer: 0
   m_Name: NPCPickupOrange
   m_TagString: Untagged
@@ -577,7 +578,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 18
   m_CollisionDetection: 0
 --- !u!114 &6724357013876843347
 MonoBehaviour:
@@ -602,6 +603,27 @@ MonoBehaviour:
   maxMotorTorque: 300
   maxSteeringAngle: 30
   brakeForce: 2000
+--- !u!65 &7288590901958298448
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569106554226088415}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.5, y: 1, z: 69}
+  m_Center: {x: 0, y: 1.43, z: 37.89}
 --- !u!1 &8563761149029213280
 GameObject:
   m_ObjectHideFlags: 0
