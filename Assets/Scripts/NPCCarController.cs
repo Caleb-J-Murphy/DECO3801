@@ -28,18 +28,24 @@ public class ForwardCar : MonoBehaviour
     private float brakeInput;
 
     private Rigidbody carRigidbody;
+    public float destructYValue = -10f;  // Set the Y-value threshold for destruction
+
 
     private void Start()
     {
         carRigidbody = GetComponent<Rigidbody>();
-        //carRigidbody.centerOfMass = Vector3.zero; // Adjust the center of mass if needed
-   
     }
 
     private void Update()
     {
         // Input handling
         motorInput = 1f;
+
+        if (transform.position.y < destructYValue)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private void FixedUpdate()
