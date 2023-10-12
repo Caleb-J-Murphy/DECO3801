@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForwardCar : MonoBehaviour
+public class NPCCarController : MonoBehaviour
 {
     [Header("Wheel Colliders")]
     public WheelCollider frontLeftWheel;
@@ -28,6 +28,7 @@ public class ForwardCar : MonoBehaviour
 
     private Rigidbody carRigidbody;
     private bool ObstacleDetected = false;
+    private Vector3 rayCollision = Vector3.zero;
 
     private void Start()
     {
@@ -38,6 +39,17 @@ public class ForwardCar : MonoBehaviour
 
     private void Update()
     {
+        var ray = new Ray(this.transform.TransformPoint(new Vector3(0f, 1f, 3f)), this.transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 30))
+        {
+            ObstacleDetected = true;
+            rayCollision = hit.point;
+        } else {
+            ObstacleDetected = false;
+        }
+
+
         // Input handling
         if (ObstacleDetected || Mathf.Abs(carRigidbody.velocity.z) > 60f) {
             motorInput = 0f;
@@ -47,7 +59,7 @@ public class ForwardCar : MonoBehaviour
             brakeInput = 0f;
         }
         
-
+        // When car falls off map, delete it
         if (transform.position.y < -10f)
         {
             Destroy(gameObject);
@@ -77,14 +89,10 @@ public class ForwardCar : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void onDrawGizmos()
     {
-        ObstacleDetected = true;
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        ObstacleDetected = false;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(rayCollision, 0.2f);
     }
 }
 

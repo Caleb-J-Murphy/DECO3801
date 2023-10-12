@@ -4332,6 +4332,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260956348}
   m_Mesh: {fileID: 4300000, guid: 42f28010e67310c4c9ea88fbc4084fc6, type: 3}
+--- !u!1001 &1324899801
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2081672042821942991, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.182
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081672042821942991, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081672042821942991, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 53.378025
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081672042821942991, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081672042821942991, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081672042821942991, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081672042821942991, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081672042821942991, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081672042821942991, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081672042821942991, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658105081057718877, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
+      propertyPath: m_Name
+      value: NPCCarBlue
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 97e4c5fa55cff964182fa0a6522e63bb, type: 3}
 --- !u!1 &1337064678
 GameObject:
   m_ObjectHideFlags: 0
@@ -58754,3 +58811,4 @@ SceneRoots:
   - {fileID: 706450375}
   - {fileID: 7594414451382313421}
   - {fileID: 986592299}
+  - {fileID: 1324899801}
