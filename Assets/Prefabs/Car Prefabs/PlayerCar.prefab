@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 92360889036032678}
   - component: {fileID: 6293574427813884123}
   - component: {fileID: 2977338423839636211}
-  - component: {fileID: 8362022108356803199}
+  - component: {fileID: 8800615271135623293}
   m_Layer: 0
   m_Name: SteeringWheel
   m_TagString: Untagged
@@ -580,7 +580,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8362022108356803199
+--- !u!114 &8800615271135623293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

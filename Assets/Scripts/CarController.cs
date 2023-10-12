@@ -58,7 +58,7 @@ public class CarController : MonoBehaviour
     {
         if (!isCrashed) {
             // Input handling
-            motorInput = Input.GetAxis("Vertical");
+            motorInput = 1f;
             steeringInput = Input.GetAxis("Horizontal");
             brakeInput = Input.GetAxis("Brake");
 
@@ -66,9 +66,7 @@ public class CarController : MonoBehaviour
             velocityFactor = 100f / (1f + Mathf.Pow(currentVelocity, 2));
 
             GetCurrentGear();
-            //
         }
-
     }
 
     private void RotateSteeringWheel()
@@ -147,7 +145,6 @@ public class CarController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("crashed");
         isCrashed = true;
         currentGear = "N";
 
