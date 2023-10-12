@@ -1524,6 +1524,7 @@ GameObject:
   - component: {fileID: 3566325774497562860}
   - component: {fileID: 3615871477026103865}
   - component: {fileID: 2105097362702255503}
+  - component: {fileID: 4684394837524521157}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -1682,6 +1683,23 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!114 &4684394837524521157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7270592484082799440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95791d63338b34fc2a7d9cae0ee488ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carRigidbody: {fileID: 9153188582714242548}
+  mainCamera: {fileID: 1348198084484852182}
+  baseFOV: 73
+  maxSpeed: 100
+  maxFovIncrease: 0.3
 --- !u!1 &7504387194196877435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1868,6 +1886,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 4740700970953927594}
   mirror: {fileID: 2100000, guid: faac1cc71bec7e44694b1cf8ee3e043b, type: 2}
   mirrorCracked: {fileID: 2100000, guid: 3927f4198424a456580a7bc2d8331b53, type: 2}
+  loseScreen: {fileID: 0}
 --- !u!54 &9153188582714242548
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1913,6 +1932,7 @@ MonoBehaviour:
   postProcessVolume: {fileID: 2105097362702255503}
   normalProfile: {fileID: 11400000, guid: 512e53f074df6e6429daaa817e4c9117, type: 2}
   flashProfile: {fileID: 11400000, guid: f2d010163b891874db83f6ea43dd9842, type: 2}
+  timerLoseScreen: {fileID: 0}
 --- !u!114 &2128336037678444617
 MonoBehaviour:
   m_ObjectHideFlags: 0
