@@ -198,7 +198,7 @@ public class CarController : MonoBehaviour
         currentVelocity = carRigidbody.velocity.magnitude;
 
         // Calculate acceleration using the inverse log function
-        float inverseLogAcceleration = maxMotorTorque / Mathf.Log(currentVelocity + 1);
+        float inverseLogAcceleration = maxMotorTorque * Mathf.Log(currentVelocity + 1);
 
         // Cap the acceleration when reaching a certain speed
         if (currentVelocity > speedCap * 0.26)
