@@ -39517,7 +39517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6736498764226773032, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
       propertyPath: deleteRange
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6736498764226773032, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
       propertyPath: isFrequencyRandom
@@ -39591,7 +39591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6736498764226773032, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
       propertyPath: deleteRange
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6736498764226773032, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
       propertyPath: isFrequencyRandom

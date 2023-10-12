@@ -19,6 +19,12 @@ public class SpawnCar : MonoBehaviour
 
     private Transform playerCamera;
 
+    private bool spawnerBlocked;
+
+    public LayerMask obstacleLayers;  // Set the layers to check for obstacles
+    public Vector3 spawnAreaSize;
+
+
     void Start() 
     {
         playerCamera = GameObject.Find("Main Camera").GetComponent<Camera>().transform;  // Assumes the player's camera is the main camera
@@ -27,7 +33,7 @@ public class SpawnCar : MonoBehaviour
 
     void Update()
     {
-        if (Time.time > lastSpawnedTime + frequency)
+        if (Time.time > lastSpawnedTime + frequency && IsAreaEmpty())
         {
             Spawn();
             lastSpawnedTime = Time.time;
@@ -48,7 +54,15 @@ public class SpawnCar : MonoBehaviour
         GameObject newSpawnedObject = Instantiate(spawnItems[randomIndex], transform.position, Quaternion.Euler(0, Rotation, 0));
         if (isFrequencyRandom) 
         {
-            frequency = Random.Range(8, 20); // spawn cars every 10-20 seconds
+            frequency = Random.Range(8, 20);
         }
+    }
+
+     bool IsAreaEmpty()
+    {
+        Collider[] hitColliders = Physics.OverlapBox(transform.position, spawnAreaSize / 2, transform.rotation, obstacleLayers);
+
+        // If there are no obstacles, return true
+        return hitColliders.Length == 0;
     }
 }

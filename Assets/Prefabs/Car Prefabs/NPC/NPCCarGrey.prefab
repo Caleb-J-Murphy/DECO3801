@@ -339,9 +339,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5725450144882481995}
   - component: {fileID: 2803171303371079293}
+  - component: {fileID: 1887723100751868076}
   - component: {fileID: 4505981569535690052}
   - component: {fileID: 3475795327860798083}
-  - component: {fileID: 1887723100751868076}
   m_Layer: 0
   m_Name: NPCCarGrey
   m_TagString: Untagged
@@ -362,6 +362,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3930788085454228726}
   - {fileID: 7105553216072816442}
   - {fileID: 1569674227182329456}
   - {fileID: 8237740628028399588}
@@ -392,6 +393,27 @@ MonoBehaviour:
   maxMotorTorque: 300
   maxSteeringAngle: 30
   brakeForce: 2000
+--- !u!65 &1887723100751868076
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914093436255711730}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.5, y: 1, z: 25}
+  m_Center: {x: 0, y: 1.43, z: 20}
 --- !u!65 &4505981569535690052
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -440,27 +462,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 18
   m_CollisionDetection: 0
---- !u!65 &1887723100751868076
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4914093436255711730}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4.5, y: 1, z: 69}
-  m_Center: {x: 0, y: 1.43, z: 37.89}
 --- !u!1 &6660103539284941538
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +585,59 @@ WheelCollider:
   m_LayerOverridePriority: 0
   m_Enabled: 1
   m_ProvidesContacts: 0
+--- !u!1 &7895723796915025151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3930788085454228726}
+  - component: {fileID: 8414622477138177252}
+  m_Layer: 8
+  m_Name: DetectorCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3930788085454228726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7895723796915025151}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5725450144882481995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8414622477138177252
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7895723796915025151}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.55, y: 2.38, z: 6.1}
+  m_Center: {x: -0.02, y: 1.44, z: -0.2}
 --- !u!1 &8325610333404241544
 GameObject:
   m_ObjectHideFlags: 0

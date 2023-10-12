@@ -82,7 +82,8 @@ public class ForwardCar : MonoBehaviour
         ObstacleDetected = true;
     }
 
-    void OnTriggerExit(Collider other) {
+    void OnTriggerExit(Collider other)
+    {
         ObstacleDetected = false;
     }
 }

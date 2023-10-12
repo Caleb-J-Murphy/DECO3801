@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3879927670814926060}
-  - component: {fileID: 8862105764022332429}
   - component: {fileID: 6736498764226773032}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NPCCarSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,32 +27,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.99, y: 3.2932813, z: 170.74}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.723, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8862105764022332429
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648376012702660376}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6736498764226773032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +52,10 @@ MonoBehaviour:
   - {fileID: 3446418678030984161, guid: 246500d48fc5e0d4ca5eedbc9c8c7b26, type: 3}
   - {fileID: 3830514087053378977, guid: 40b3c70375bd203478790318e1d854aa, type: 3}
   frequency: 0
-  playerCamera: {fileID: 0}
   deleteRange: 100
   isFrequencyRandom: 1
   Rotation: 0
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  spawnAreaSize: {x: 5, y: 1, z: 100}

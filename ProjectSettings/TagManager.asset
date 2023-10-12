@@ -3,17 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - building
+  - road_block
+  - NPC_person
+  - TriggerBoxes
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - TriggerBoxes
   - Water
   - UI
   - Ground
   - Environment
-  - 
+  - NPCCars
   - 
   - 
   - 
