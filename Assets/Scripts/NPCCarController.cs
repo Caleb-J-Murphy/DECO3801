@@ -32,23 +32,18 @@ public class ForwardCar : MonoBehaviour
     private void Start()
     {
         carRigidbody = GetComponent<Rigidbody>();
-        carRigidbody.centerOfMass = Vector3.zero; // Adjust the center of mass if needed
+        //carRigidbody.centerOfMass = Vector3.zero; // Adjust the center of mass if needed
    
     }
 
     private void Update()
     {
         // Input handling
-        motorInput = 1000f;
-        // motorInput = Input.GetAxis("Vertical");
-        steeringInput = Input.GetAxis("Horizontal");
-        brakeInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
+        motorInput = 1f;
     }
 
     private void FixedUpdate()
     {
-
-
         // Apply motor torque to the wheels
         frontLeftWheel.motorTorque = maxMotorTorque * motorInput;
         frontRightWheel.motorTorque = maxMotorTorque * motorInput;
