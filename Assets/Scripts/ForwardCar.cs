@@ -22,41 +22,58 @@ public class ForwardCar : MonoBehaviour
     public float maxMotorTorque = 300f;
     public float maxSteeringAngle = 30f;
     public float brakeForce = 2000f;
-
     private float motorInput;
     private float steeringInput;
     private float brakeInput;
 
+    public float initialVelocity = 20f;
+    public float detectionRange = 30f;
+
     private Rigidbody carRigidbody;
+    private bool ObstacleDetected = false;
+    private Vector3 rayCollision = Vector3.zero;
 
     private void Start()
     {
         carRigidbody = GetComponent<Rigidbody>();
-        carRigidbody.centerOfMass = Vector3.zero; // Adjust the center of mass if needed
-   
+
+        carRigidbody.velocity = transform.forward * initialVelocity; // give NPC cars an initial speed
     }
 
     private void Update()
     {
+        var ray = new Ray(this.transform.TransformPoint(new Vector3(0f, 1f, 3f)), this.transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, detectionRange))
+        {
+            ObstacleDetected = true;
+            rayCollision = hit.point;
+        } else {
+            ObstacleDetected = false;
+        }
+
+
         // Input handling
-        motorInput = 1000f;
-        // motorInput = Input.GetAxis("Vertical");
-        steeringInput = Input.GetAxis("Horizontal");
-        brakeInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
+        if (ObstacleDetected || Mathf.Abs(carRigidbody.velocity.z) > 60f) {
+            motorInput = 0f;
+            brakeInput = 1f;
+        } else {
+            motorInput = 1f;
+            brakeInput = 0f;
+        }
+        
+        // When car falls off map, delete it
+        if (transform.position.y < -10f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void FixedUpdate()
     {
-
-
         // Apply motor torque to the wheels
         frontLeftWheel.motorTorque = maxMotorTorque * motorInput;
         frontRightWheel.motorTorque = maxMotorTorque * motorInput;
-
-        // Apply steering angle to the front wheels
-        float steerAngle = maxSteeringAngle * steeringInput;
-        frontLeftWheel.steerAngle = steerAngle;
-        frontRightWheel.steerAngle = steerAngle;
 
         // Apply braking force to all wheels
         if (brakeInput > 0f)
@@ -73,29 +90,11 @@ public class ForwardCar : MonoBehaviour
             rearLeftWheel.brakeTorque = 0f;
             rearRightWheel.brakeTorque = 0f;
         }
-
-        // Apply steering rotation to the wheel models
-        float steerRotation = maxSteeringAngle * steeringInput;
-        frontLeftWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
-        frontRightWheelTransform.localRotation = Quaternion.Euler(-90f, 0, steerRotation);
-
-        
-
-        //Update wheel transforms
-        //UpdateWheelTransform(frontLeftWheel, frontLeftWheelTransform);
-        //UpdateWheelTransform(frontRightWheel, frontRightWheelTransform);
-        //UpdateWheelTransform(rearLeftWheel, rearLeftWheelTransform);
-        //UpdateWheelTransform(rearRightWheel, rearRightWheelTransform);
-
     }
 
-    private void UpdateWheelTransform(WheelCollider wheelCollider, Transform wheelTransform)
+    void onDrawGizmos()
     {
-        Vector3 position;
-        Quaternion rotation;
-        wheelCollider.GetWorldPose(out position, out rotation);
-        wheelTransform.position = position;
-        wheelTransform.rotation = rotation;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(rayCollision, 0.2f);
     }
 }
-
