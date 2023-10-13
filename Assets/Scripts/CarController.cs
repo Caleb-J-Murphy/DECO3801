@@ -45,6 +45,8 @@ public class CarController : MonoBehaviour
     public Material mirror;
     public Material mirrorCracked;
 
+    [Header("Screens")]
+    public GameObject crashScreen;
 
     private void Start()
     {
@@ -94,25 +96,24 @@ public class CarController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
+    {// Calculate acceleration based on current speed
+        float acceleration = CalculateAcceleration();
+
+        if (motorInput < 0.2 || currentVelocity > speedCap * 0.26) {
+            acceleration = 0;
+            brakeInput = 0.5f;
+        }
         switch (currentGear)
         {
             case "D":
-                // Calculate acceleration based on current speed
-                float acceleration = CalculateAcceleration();
-
-                if (motorInput < 0.2 || currentVelocity > speedCap * 0.26) {
-                    acceleration = 0;
-                    brakeInput = 0.5f;
-                }
                 frontLeftWheel.motorTorque = maxMotorTorque * motorInput * acceleration;
                 frontRightWheel.motorTorque = maxMotorTorque * motorInput * acceleration;
 
                 break;
 
             case "R":
-                frontLeftWheel.motorTorque = maxMotorTorque * -1f * motorInput * velocityFactor;
-                frontRightWheel.motorTorque = maxMotorTorque * -1f * motorInput * velocityFactor;
+                frontLeftWheel.motorTorque = maxMotorTorque * -1f * motorInput * acceleration;
+                frontRightWheel.motorTorque = maxMotorTorque * -1f * motorInput * acceleration;
                 break;
 
             case "P":
@@ -162,6 +163,9 @@ public class CarController : MonoBehaviour
         }
 
         meshRenderer.materials = materials;
+
+        crashScreen.SetActive(true);
+
     }
 
     private void UpdateWheelTransform(WheelCollider wheelCollider, Transform wheelTransform)
