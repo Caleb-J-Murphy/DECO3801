@@ -13,8 +13,6 @@ public class PlayerDrivingTailgating : MonoBehaviour
 
     public float minimumSpeed = 50;
 
-    private float currentSpeed = 0f;
-
     private Rigidbody rigidbody;
 
     private float initialYRotation;

@@ -1241,7 +1241,7 @@ MonoBehaviour:
   frontRightWheel: {fileID: 612092816}
   rearLeftWheel: {fileID: 620472980}
   rearRightWheel: {fileID: 1494376935}
-  steeringWheel: {fileID: 0}
+  steeringWheel: {fileID: 1635767740}
   frontLeftWheelTransform: {fileID: 1124755875}
   frontRightWheelTransform: {fileID: 612092815}
   rearLeftWheelTransform: {fileID: 620472979}
@@ -3096,7 +3096,6 @@ GameObject:
   - component: {fileID: 1635767740}
   - component: {fileID: 1635767743}
   - component: {fileID: 1635767742}
-  - component: {fileID: 1635767741}
   m_Layer: 0
   m_Name: SteeringWheel
   m_TagString: Untagged
@@ -3119,18 +3118,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1890421071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1635767741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635767739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bd71156580aa4a90a5a2869088e0171, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1635767742
 MeshRenderer:
   m_ObjectHideFlags: 0

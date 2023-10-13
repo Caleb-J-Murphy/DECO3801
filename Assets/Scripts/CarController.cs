@@ -203,7 +203,6 @@ public class CarController : MonoBehaviour
         // Cap the acceleration when reaching a certain speed
         if (currentVelocity > speedCap * 0.26)
         {
-            Debug.Log("We hit a cap, CV = " + (currentVelocity * 0.26) + " --- Acc Cap: " + speedCap);
             inverseLogAcceleration = 0.0f;
         }
 
