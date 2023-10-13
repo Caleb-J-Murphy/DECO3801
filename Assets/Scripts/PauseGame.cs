@@ -8,7 +8,7 @@ public class PauseGame : MonoBehaviour
     private bool isPaused = false;
 
     private void Start() {
-        pauseMenu.active = false;
+        pauseMenu.SetActive(false);
     }
 
     private void Update()
@@ -16,11 +16,11 @@ public class PauseGame : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B) && isPaused)
         {
             ResumeGame();
-            pauseMenu.active = false;
+            pauseMenu.SetActive(false);
         } 
         if (Input.GetKeyDown(KeyCode.U) && !isPaused) {
             Pause();
-            pauseMenu.active = true;
+            pauseMenu.SetActive(true);
         }
     }
 
