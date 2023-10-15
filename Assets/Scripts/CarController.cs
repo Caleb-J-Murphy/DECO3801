@@ -146,7 +146,62 @@ public class CarController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("crashed");
+        //Handle colliding with ragdoll
+        Transform currentTransform = collision.transform;
+
+        while (currentTransform != null)
+        {
+            if (currentTransform.CompareTag("npc"))
+            {
+                // You've found the first parent with the "npc" tag.
+                break;
+            }
+
+            currentTransform = currentTransform.parent;
+        }
+
+        if (currentTransform != null)
+        {
+            // Now 'currentTransform' points to the first parent with the "npc" tag.
+
+            // Disable the animator on the NPC.
+            Animator npcAnimator = currentTransform.GetComponent<Animator>();
+            if (npcAnimator != null)
+            {
+                npcAnimator.enabled = false;
+            }
+            
+            Rigidbody[] ragdollRigidbodies = currentTransform.GetComponentsInChildren<Rigidbody>();
+            float force = 2f;
+            force /= 10;
+
+            foreach (Rigidbody rb in ragdollRigidbodies)
+            {
+                // Enable each ragdoll rigidbody and apply force based on car's collision.
+                rb.isKinematic = false;
+
+                // Calculate the force to apply to the ragdoll.
+                Vector3 newForce = collision.relativeVelocity * force;
+
+                rb.AddForce(newForce, ForceMode.Impulse);
+            }
+
+            // Calculate the force to apply to the car.
+            float carForceMultiplier = 0.1f; // 10% of the force.
+            Vector3 carForce = collision.relativeVelocity * force * carForceMultiplier;
+            Rigidbody carRigidbody = GetComponent<Rigidbody>(); // Assuming the car has a Rigidbody.
+
+            // Reset the car's velocity before applying the force.
+            carRigidbody.velocity = Vector3.zero;
+            carRigidbody.angularVelocity = Vector3.zero;
+
+            carRigidbody.AddForce(carForce, ForceMode.Impulse);
+
+            // Optionally, you can disable the car's collider or gameObject to prevent multiple collisions.
+            // gameObject.SetActive(false);
+        }
+
+        //Handle Crash
         isCrashed = true;
         currentGear = "N";
 
