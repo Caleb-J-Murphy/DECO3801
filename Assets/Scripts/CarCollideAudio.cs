@@ -13,22 +13,38 @@ using UnityEngine;
  */
 public class CarCollideAudio : MonoBehaviour
 {
-    public AudioSource slowCrash, fastCrash;
+    public AudioSource slowCrash, fastCrash, engineIdle, engineStart;
     public float speedThreshold = 40f;
+    public float maxSpeedKPH = 100f;
     
     private AudioSource audio;
     private Rigidbody playerCar;
     private bool collision_state;
+    private bool engineIdle_state;
 
     public void Start()
     {
         playerCar = GetComponent<Rigidbody>();
         collision_state = false;
+        engineIdle_state = false;
     }
 
     float unity_to_kph(Rigidbody car)
     {
         return (car.velocity.magnitude * 3.6f);
+    }
+
+    public void Update()
+    {
+        float speedRatio = unity_to_kph(playerCar)/maxSpeedKPH;
+        engineIdle.pitch = speedRatio + 1f;
+        if (engineIdle_state == false && !engineStart.isPlaying) {
+            engineIdle.Play(); // plays on loop
+            engineIdle_state = true;
+        }
+        /*if (!collision_state && !engineStart.isPlaying) {
+            engineIdle.Play();
+        }*/
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -38,16 +54,22 @@ public class CarCollideAudio : MonoBehaviour
         }
         collision_state = true;
 
-        for (Transform collider = collision.transform; ; collider = collider.parent) {
+        /* NPC scream */
+        for (Transform collider = collision.transform; collider != null; collider = collider.parent) {
             if (collider.CompareTag("npc") && (audio = collider.GetComponent<AudioSource>()) != null) {
                 if (!audio.isPlaying) {
                     audio.Play();
                     break;
                 }
             }
-            
         }
 
+        /* car engine sound off */
+        if (engineIdle.isPlaying) {
+            engineIdle.Stop();
+        }
+
+        /* crash sound based on speed */
         if (unity_to_kph(playerCar) > speedThreshold) {
             if (!fastCrash.isPlaying) {
                 fastCrash.Play();
@@ -57,5 +79,7 @@ public class CarCollideAudio : MonoBehaviour
                 slowCrash.Play();
             }
         }
+
+
     }
 }
