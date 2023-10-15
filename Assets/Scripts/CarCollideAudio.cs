@@ -5,32 +5,50 @@ using UnityEngine;
 /*
  * Attach this to the main car
  * the main car should have 2 audios
- * (1) for a crash at slow speeds <= 40 km/h
- * (2) for a crash at high speeds > 40 km/h
+ * (1) for a crash at slow speeds <= speedThreshold km/h
+ * (2) for a crash at high speeds > speedThreshold km/h
+ * 
+ * The collision can only occur once, even if the car (after a crash)
+ * rolls into a building for example.
  */
 public class CarCollideAudio : MonoBehaviour
 {
     public AudioSource slowCrash, fastCrash;
+    public float speedThreshold = 40f;
+    
     private AudioSource audio;
-
     private Rigidbody playerCar;
+    private bool collision_state;
 
     public void Start()
     {
         playerCar = GetComponent<Rigidbody>();
+        collision_state = false;
+    }
+
+    float unity_to_kph(Rigidbody car)
+    {
+        return (car.velocity.magnitude * 3.6f);
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "NPC_person") {
-            audio = collision.gameObject.GetComponent<AudioSource>();
-            if (audio) {
+        if (collision_state == true) {
+            return;
+        }
+        collision_state = true;
+
+        for (Transform collider = collision.transform; ; collider = collider.parent) {
+            if (collider.CompareTag("npc") && (audio = collider.GetComponent<AudioSource>()) != null) {
                 if (!audio.isPlaying) {
                     audio.Play();
+                    break;
                 }
             }
+            
         }
-        if ((playerCar.velocity.magnitude * 3.6f) > 40) {
+
+        if (unity_to_kph(playerCar) > speedThreshold) {
             if (!fastCrash.isPlaying) {
                 fastCrash.Play();
             }
