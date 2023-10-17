@@ -6,8 +6,9 @@ using UnityEngine;
 public class ChunkLoading : MonoBehaviour
 {
     public Transform startPoint, endPoint;
-    public Transform cameraTransform;
-    public GameObject prefabRef;
+    public Transform player;
+    public GameObject chunk;
+    public int count = 2;
 
     private List<GameObject> allChunks;
     private float prefabLength, nextZ;
@@ -27,7 +28,7 @@ public class ChunkLoading : MonoBehaviour
     {
         GameObject tmpChunk = null;
         foreach (GameObject chunk in allChunks) {
-            if (chunk.transform.position.z - prefabLength > cameraTransform.transform.position.z) {
+            if (chunk.transform.position.z - prefabLength > player.transform.position.z) {
                 tmpChunk = chunk;                
                 Destroy(chunk);
             }
@@ -37,10 +38,11 @@ public class ChunkLoading : MonoBehaviour
             allChunks.Remove(tmpChunk);    
         }
 
-        if (cameraTransform != null &&
-            allChunks.Count <= 3 &&
-            Mathf.Abs(cameraTransform.transform.position.z - prefabLength) <= Mathf.Abs(nextZ)) {
-            prevChunk = Instantiate(prefabRef, new Vector3(prevChunk.transform.position.x, prevChunk.transform.position.y, nextZ), Quaternion.identity);
+        if (player != null &&
+
+            allChunks.Count <= count &&
+            Mathf.Abs(player.transform.position.z - prefabLength) <= Mathf.Abs(nextZ)) {
+            prevChunk = Instantiate(chunk, new Vector3(prevChunk.transform.position.x, prevChunk.transform.position.y, nextZ), Quaternion.identity);
             allChunks.Add(prevChunk);
             nextZ -= prefabLength;
         }
