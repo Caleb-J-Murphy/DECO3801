@@ -38,6 +38,7 @@ public class CarCollideAudio : MonoBehaviour
     {
         float speedRatio = unity_to_kph(playerCar)/maxSpeedKPH;
         engineIdle.pitch = speedRatio + 1f;
+        engineStart.pitch = speedRatio + 1f;
         if (engineIdle_state == false && !engineStart.isPlaying) {
             engineIdle.Play(); // plays on loop
             engineIdle_state = true;
