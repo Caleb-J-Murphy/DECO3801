@@ -21,6 +21,7 @@ public class CarCollideAudio : MonoBehaviour
     private Rigidbody playerCar;
     private bool collision_state;
     private bool engineIdle_state;
+    private float currSpeed;
 
     public void Start()
     {
@@ -31,21 +32,19 @@ public class CarCollideAudio : MonoBehaviour
 
     float unity_to_kph(Rigidbody car)
     {
-        return (car.velocity.magnitude * 3.6f);
+        return Mathf.FloorToInt(car.velocity.magnitude * 3.6f);
     }
 
     public void Update()
     {
-        float speedRatio = unity_to_kph(playerCar)/maxSpeedKPH;
+        currSpeed = unity_to_kph(playerCar);
+        float speedRatio = currSpeed/maxSpeedKPH;
         engineIdle.pitch = speedRatio + 1f;
         engineStart.pitch = speedRatio + 1f;
         if (engineIdle_state == false && !engineStart.isPlaying) {
             engineIdle.Play(); // plays on loop
             engineIdle_state = true;
         }
-        /*if (!collision_state && !engineStart.isPlaying) {
-            engineIdle.Play();
-        }*/
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -71,7 +70,7 @@ public class CarCollideAudio : MonoBehaviour
         }
 
         /* crash sound based on speed */
-        if (unity_to_kph(playerCar) > speedThreshold) {
+        if (currSpeed > speedThreshold) {
             if (!fastCrash.isPlaying) {
                 fastCrash.Play();
             }
