@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class CarController : MonoBehaviour
 {
@@ -45,8 +46,18 @@ public class CarController : MonoBehaviour
     public Material mirror;
     public Material mirrorCracked;
 
+    [Header("FadeOut")]
+    public UnityEngine.UI.Image image;
+
+
+
+    [Header("Particle")]
+    public ParticleSystem blood;
+    private bool hasBled = false;
+
     [Header("Screens")]
     public GameObject crashScreen;
+
 
     private void Start()
     {
@@ -67,8 +78,12 @@ public class CarController : MonoBehaviour
 
             GetCurrentGear();
             //
+        } else {
+            // make canvas less transparent
+            Color c = image.color;
+            c.a += 0.01f * Time.deltaTime;
+            image.color = c;
         }
-
     }
 
     private void RotateSteeringWheel()
@@ -153,6 +168,10 @@ public class CarController : MonoBehaviour
         {
             if (currentTransform.CompareTag("npc"))
             {
+                if (!hasBled) {
+                    hasBled = true;
+                    blood.Play();
+                }
                 // You've found the first parent with the "npc" tag.
                 break;
             }
@@ -170,7 +189,7 @@ public class CarController : MonoBehaviour
             {
                 npcAnimator.enabled = false;
             }
-            
+
             Rigidbody[] ragdollRigidbodies = currentTransform.GetComponentsInChildren<Rigidbody>();
             float force = 2f;
             force /= 10;

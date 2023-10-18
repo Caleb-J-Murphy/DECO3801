@@ -7,16 +7,16 @@ using UnityEngine;
  * the main car should have 2 audios
  * (1) for a crash at slow speeds <= speedThreshold km/h
  * (2) for a crash at high speeds > speedThreshold km/h
- * 
+ *
  * The collision can only occur once, even if the car (after a crash)
  * rolls into a building for example.
  */
 public class CarCollideAudio : MonoBehaviour
 {
-    public AudioSource slowCrash, fastCrash, engineIdle, engineStart;
+    public AudioSource slowCrash, fastCrash, engineIdle, engineStart, earsRinging;
     public float speedThreshold = 40f;
     public float maxSpeedKPH = 100f;
-    
+
     private AudioSource audio;
     private Rigidbody playerCar;
     private bool collision_state;
@@ -75,12 +75,14 @@ public class CarCollideAudio : MonoBehaviour
             if (!fastCrash.isPlaying) {
                 fastCrash.Play();
             }
+
+            if (!earsRinging.isPlaying) {
+                earsRinging.Play();
+            }
         } else {
             if (!slowCrash.isPlaying) {
                 slowCrash.Play();
             }
         }
-
-
     }
 }
