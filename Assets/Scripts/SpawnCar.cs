@@ -11,7 +11,7 @@ public class SpawnCar : MonoBehaviour
 
     public float deleteRange = 100f; 
 
-    public bool isFrequencyRandom;
+    public bool isFrequencyRandom = true;
 
     float lastSpawnedTime;
 
@@ -28,7 +28,6 @@ public class SpawnCar : MonoBehaviour
     void Start() 
     {
         playerCamera = GameObject.Find("Main Camera").GetComponent<Camera>().transform;  // Assumes the player's camera is the main camera
-        isFrequencyRandom = true;
     }
 
     void Update()
