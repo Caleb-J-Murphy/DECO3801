@@ -17,7 +17,7 @@ public class LevelTimer : MonoBehaviour
     public PostProcessVolume postProcessVolume;
     public PostProcessProfile normalProfile;
     public PostProcessProfile flashProfile;
-    
+
     private bool isFlashing = false;
     private float flashDuration = 0.4f; // Adjust the duration of the flash (in seconds)
 
@@ -58,12 +58,9 @@ public class LevelTimer : MonoBehaviour
             text.text = beginning + seconds.ToString();
 
             // Check if the countdown is below 10 seconds to activate the flash effect
-            if (seconds < 10)
+            if (seconds < 10 && !isFlashing)
             {
-                if (!isFlashing)
-                {
-                    StartFlashEffect();
-                }
+                StartFlashEffect();
             }
         }
     }
