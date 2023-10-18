@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueMaster : MonoBehaviour
 {
@@ -12,11 +13,28 @@ public class DialogueMaster : MonoBehaviour
     private int currentDialogueIndex = 0;
     public AudioClip[] audioClips;
     private AudioSource audioSource;
+    
+    public bool isOpening;
+
+    private bool startedDialogue = false;
 
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
-        StartCoroutine(ChangeDialogue());
+        if (!isOpening) {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            StartCoroutine(ChangeDialogue());
+        }
+    }
+    
+    void Update()
+    {
+        if (isOpening && !startedDialogue ) {
+            if (Input.GetButtonDown("b")) {
+                audioSource = gameObject.AddComponent<AudioSource>();
+                StartCoroutine(ChangeDialogue());
+                startedDialogue = true;
+        }
+        }
     }
 
     IEnumerator ChangeDialogue()
@@ -35,6 +53,8 @@ public class DialogueMaster : MonoBehaviour
 
             currentDialogueIndex++;
         }
+        //Next sceen
+        SceneManager.LoadScene("FinalTailgatingEnvironment");
     }
 
     public void HideDialogue()

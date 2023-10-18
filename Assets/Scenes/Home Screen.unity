@@ -1293,7 +1293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 26.1}
+  m_AnchoredPosition: {x: 16.6, y: 26.98}
   m_SizeDelta: {x: 2.6, y: 98.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &656114858
@@ -1331,8 +1331,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 289.9, y: 99.2}
+  m_AnchoredPosition: {x: 0, y: 136.22}
+  m_SizeDelta: {x: 273.7, y: 99.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &656114860
 MonoBehaviour:
@@ -1347,7 +1347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.65882355}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2428,6 +2428,7 @@ GameObject:
   - component: {fileID: 1244803120}
   - component: {fileID: 1244803119}
   - component: {fileID: 1244803118}
+  - component: {fileID: 1244803122}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2520,6 +2521,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1244803122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244803117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb9f3c432cdaf242a00c2822f4a8376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1255056406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,6 +2589,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6ef9dbaea4c089047bf1f74d94a6737f, type: 3}
   - {fileID: 8300000, guid: 7819c79bcef8e3340992f14f44a29ffa, type: 3}
   - {fileID: 8300000, guid: 10c136b224033c84e89f36d861f4ca8d, type: 3}
+  isOpening: 1
 --- !u!4 &1255056408
 Transform:
   m_ObjectHideFlags: 0
@@ -3022,6 +3036,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1378858085}
+  - component: {fileID: 1378858086}
   m_Layer: 0
   m_Name: Start Screen
   m_TagString: Untagged
@@ -3045,6 +3060,19 @@ Transform:
   - {fileID: 1289435708}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1378858086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378858084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11afde049a5277046b4c833ed1eb7fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
 --- !u!4 &1379685151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b82e76f4092b7d24aaeecddf36fe8d3b, type: 3}
