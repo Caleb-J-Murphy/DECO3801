@@ -29,6 +29,8 @@ public class ForwardCar : MonoBehaviour
     public float initialVelocity = 20f;
     public float detectionRange = 30f;
 
+    public float maxSpeed = 20f;
+
     private Rigidbody carRigidbody;
     private bool ObstacleDetected = false;
     private Vector3 rayCollision = Vector3.zero;
@@ -54,7 +56,7 @@ public class ForwardCar : MonoBehaviour
 
 
         // Input handling
-        if (ObstacleDetected || Mathf.Abs(carRigidbody.velocity.z) > 60f) {
+        if (ObstacleDetected || Mathf.Abs(carRigidbody.velocity.z) > maxSpeed) {
             motorInput = 0f;
             brakeInput = 1f;
         } else {
