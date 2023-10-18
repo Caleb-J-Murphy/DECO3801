@@ -16,6 +16,10 @@ public class DialogueMaster : MonoBehaviour
     
     public bool isOpening;
 
+    public bool isPolice;
+
+    public bool isCourtRoom;
+
     private bool startedDialogue = false;
 
     void Start()
@@ -54,7 +58,15 @@ public class DialogueMaster : MonoBehaviour
             currentDialogueIndex++;
         }
         //Next sceen
-        SceneManager.LoadScene("FinalTailgatingEnvironment");
+        if (isOpening) {
+            SceneManager.LoadScene("FinalTailgatingEnvironment");
+        }
+        else if (isPolice) {
+            SceneManager.LoadScene("Courtroom");
+        }
+        else if (isCourtRoom) {
+            SceneManager.LoadScene("Home Screen");
+        }
     }
 
     public void HideDialogue()

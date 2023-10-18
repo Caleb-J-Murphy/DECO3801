@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {
@@ -159,7 +160,7 @@ public class CarController : MonoBehaviour
         RotateSteeringWheel();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private IEnumerator OnCollisionEnter(Collision collision)
     {
         //Handle colliding with ragdoll
         Transform currentTransform = collision.transform;
@@ -173,6 +174,8 @@ public class CarController : MonoBehaviour
                     blood.Play();
                 }
                 // You've found the first parent with the "npc" tag.
+                yield return new WaitForSeconds(4);
+                SceneManager.LoadScene("Police");
                 break;
             }
 

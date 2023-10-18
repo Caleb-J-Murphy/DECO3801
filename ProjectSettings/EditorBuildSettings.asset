@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Home Screen.unity
     guid: 8f1f7b0c8f2346d4c8e407c24b8567cd
+  - enabled: 1
+    path: Assets/Scenes/FinalTailgatingEnvironment.unity
+    guid: 5b87a054b5f9d37d3b1afd69bd960f6b
+  - enabled: 1
+    path: Assets/Scenes/Police.unity
+    guid: 464068c9dc018614bbc53580dea49ccb
+  - enabled: 1
+    path: Assets/Scenes/Courtroom.unity
+    guid: ad24bed38dfced241987e10219130982
   m_configObjects: {}
