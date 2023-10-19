@@ -53,10 +53,6 @@ public class CarController : MonoBehaviour
     public ParticleSystem blood;
     private bool hasBled = false;
 
-    [Header("Screens")]
-    public GameObject crashScreen;
-
-
     private void Start()
     {
         carRigidbody = GetComponent<Rigidbody>();
@@ -232,9 +228,6 @@ public class CarController : MonoBehaviour
         }
 
         meshRenderer.materials = materials;
-
-        crashScreen.SetActive(true);
-
     }
 
     private void UpdateWheelTransform(WheelCollider wheelCollider, Transform wheelTransform)
