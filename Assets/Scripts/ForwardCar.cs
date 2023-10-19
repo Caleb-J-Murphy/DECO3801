@@ -35,9 +35,13 @@ public class ForwardCar : MonoBehaviour
     private bool ObstacleDetected = false;
     private Vector3 rayCollision = Vector3.zero;
 
+    private AudioSource audio;
+
     private void Start()
     {
         carRigidbody = GetComponent<Rigidbody>();
+        audio = GetComponent<AudioSource>();
+
 
         carRigidbody.velocity = transform.forward * initialVelocity; // give NPC cars an initial speed
     }
@@ -50,6 +54,12 @@ public class ForwardCar : MonoBehaviour
         {
             ObstacleDetected = true;
             rayCollision = hit.point;
+
+            if (audio != null) {
+                if (!audio.isPlaying) { // play horn sound effect
+                        audio.Play();
+                }
+            }
         } else {
             ObstacleDetected = false;
         }
@@ -64,8 +74,8 @@ public class ForwardCar : MonoBehaviour
             brakeInput = 0f;
         }
         
-        // When car falls off map, delete it
-        if (transform.position.y < -10f)
+        // When car falls off map or reaches the stadium gate, delete it
+        if (transform.position.y < -10f || transform.position.z < -800f)
         {
             Destroy(gameObject);
         }
