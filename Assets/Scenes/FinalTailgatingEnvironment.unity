@@ -7319,7 +7319,7 @@ Transform:
   m_GameObject: {fileID: 1731472347}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5349343, y: 0.54121333, z: -0.46416655, w: 0.4533022}
-  m_LocalPosition: {x: 0.46, y: 1.8853, z: 1.4392}
+  m_LocalPosition: {x: 0.54, y: 1.8853, z: 1.52}
   m_LocalScale: {x: 0.019153038, y: 0.037880603, z: -0.027180223}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7814,7 +7814,8 @@ PrefabInstance:
       value: StartingChunkFlipped
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1562512907503603084, guid: 483c2c956e16126daa62e5e43a5870b6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8581824370091335036, guid: 483c2c956e16126daa62e5e43a5870b6, type: 3}
