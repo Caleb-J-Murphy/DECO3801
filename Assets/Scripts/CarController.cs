@@ -162,8 +162,7 @@ public class CarController : MonoBehaviour
                     blood.Play();
                 }
                 // You've found the first parent with the "npc" tag.
-                yield return new WaitForSeconds(4);
-                SceneManager.LoadScene("Police");
+
                 break;
             }
 
@@ -210,6 +209,8 @@ public class CarController : MonoBehaviour
             // Optionally, you can disable the car's collider or gameObject to prevent multiple collisions.
             // gameObject.SetActive(false);
         }
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene("Police");
 
         //Handle Crash
         isCrashed = true;
