@@ -302,7 +302,6 @@ GameObject:
   - component: {fileID: 114966256}
   - component: {fileID: 114966259}
   - component: {fileID: 114966258}
-  - component: {fileID: 114966257}
   m_Layer: 0
   m_Name: SteeringWheel
   m_TagString: Untagged
@@ -325,18 +324,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1757023065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114966257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114966255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bd71156580aa4a90a5a2869088e0171, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &114966258
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -471,71 +458,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135688478}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &144865195
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1648376012702660376, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_Name
-      value: NPCCarSpawnerOncoming
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.723
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.185318
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6848984
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 214.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736498764226773032, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: Rotation
-      value: 180
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
 --- !u!1 &259482781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,75 +2572,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569685405}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &650389321
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1648376012702660376, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_Name
-      value: NPCCarSpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.723
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.1746826
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.8848953
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -14.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879927670814926060, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736498764226773032, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: frequency
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736498764226773032, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
-      propertyPath: spawnAreaSize.z
-      value: 20
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 11037b33a766b9946ad0174d938a1bb6, type: 3}
 --- !u!1 &706450373
 GameObject:
   m_ObjectHideFlags: 0
@@ -9829,7 +9682,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f92d2c2194ca04a0c8ecb586cdbb9d5c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.502
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10447,7 +10300,7 @@ MonoBehaviour:
   endPoint: {fileID: 8814991829632736789}
   player: {fileID: 1526982844}
   count: 2
-  chunk: {fileID: 5792120431144444779, guid: ddd3ec8e7bd75864199498ccde365a7b, type: 3}
+  chunk: {fileID: 3762215927609801452, guid: 1d7c50a4377ca8915b03af67a4947e9d, type: 3}
   finalChunk: {fileID: 6743885806437258500, guid: 3f4c75b786ac5b82a97b0f239c7025d2, type: 3}
 --- !u!4 &8052413808200171997 stripped
 Transform:
@@ -10466,6 +10319,4 @@ SceneRoots:
   - {fileID: 377947305}
   - {fileID: 1526982844}
   - {fileID: 706450375}
-  - {fileID: 144865195}
-  - {fileID: 650389321}
   - {fileID: 3787122755056757233}

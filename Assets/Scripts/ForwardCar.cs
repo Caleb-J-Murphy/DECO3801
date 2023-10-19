@@ -35,9 +35,13 @@ public class ForwardCar : MonoBehaviour
     private bool ObstacleDetected = false;
     private Vector3 rayCollision = Vector3.zero;
 
+    private AudioSource audio;
+
     private void Start()
     {
         carRigidbody = GetComponent<Rigidbody>();
+        audio = GetComponent<AudioSource>();
+
 
         carRigidbody.velocity = transform.forward * initialVelocity; // give NPC cars an initial speed
     }
@@ -50,6 +54,10 @@ public class ForwardCar : MonoBehaviour
         {
             ObstacleDetected = true;
             rayCollision = hit.point;
+
+            if (!audio.isPlaying) { // play horn sound effect
+                    audio.Play();
+            }
         } else {
             ObstacleDetected = false;
         }
