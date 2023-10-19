@@ -55,8 +55,10 @@ public class ForwardCar : MonoBehaviour
             ObstacleDetected = true;
             rayCollision = hit.point;
 
-            if (!audio.isPlaying) { // play horn sound effect
-                    audio.Play();
+            if (audio != null) {
+                if (!audio.isPlaying) { // play horn sound effect
+                        audio.Play();
+                }
             }
         } else {
             ObstacleDetected = false;
@@ -72,8 +74,8 @@ public class ForwardCar : MonoBehaviour
             brakeInput = 0f;
         }
         
-        // When car falls off map, delete it
-        if (transform.position.y < -10f)
+        // When car falls off map or reaches the stadium gate, delete it
+        if (transform.position.y < -10f || transform.position.z < -800f)
         {
             Destroy(gameObject);
         }
