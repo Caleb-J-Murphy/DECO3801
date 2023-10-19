@@ -244,6 +244,7 @@ MonoBehaviour:
   rearLeftWheel: {fileID: 1308842598}
   rearRightWheel: {fileID: 601596458}
   steeringWheel: {fileID: 0}
+  steeringWheel: {fileID: 0}
   frontLeftWheelTransform: {fileID: 1373296469}
   frontRightWheelTransform: {fileID: 1180634463}
   rearLeftWheelTransform: {fileID: 1308842595}
@@ -256,9 +257,11 @@ MonoBehaviour:
   speedCap: 10
   isCrashed: 0
   steeringWheelRotationSpeed: 100
+  steeringWheelRotationSpeed: 100
   meshRenderer: {fileID: 0}
   mirror: {fileID: 0}
   mirrorCracked: {fileID: 0}
+  crashScreen: {fileID: 0}
   crashScreen: {fileID: 0}
 --- !u!65 &97671191
 BoxCollider:
@@ -2584,9 +2587,9 @@ MonoBehaviour:
   - I better be quick, he's so mad.
   audioClips:
   - {fileID: 8300000, guid: 1533377f08d7d624aa8f7c44761c7c34, type: 3}
-  - {fileID: 8300000, guid: 5a90c974217818040bdca61c766a480b, type: 3}
+  - {fileID: 8300000, guid: e54c7d9ade696d94ab2041a097835591, type: 3}
   - {fileID: 8300000, guid: e9d40e936f83bd24d9629dd6b47f681c, type: 3}
-  - {fileID: 8300000, guid: 6ef9dbaea4c089047bf1f74d94a6737f, type: 3}
+  - {fileID: 8300000, guid: 04ab9e45fc3363d4296a6f3fde44c17f, type: 3}
   - {fileID: 8300000, guid: 7819c79bcef8e3340992f14f44a29ffa, type: 3}
   - {fileID: 8300000, guid: 10c136b224033c84e89f36d861f4ca8d, type: 3}
   isOpening: 1
