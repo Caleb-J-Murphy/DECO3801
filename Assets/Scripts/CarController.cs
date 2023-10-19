@@ -150,6 +150,24 @@ public class CarController : MonoBehaviour
 
     private IEnumerator OnCollisionEnter(Collision collision)
     {
+        //Handle Crash
+        isCrashed = true;
+        currentGear = "N";
+
+        // Find the "mirror" material and change it to "mirror_cracked"
+        Material[] materials = meshRenderer.materials;
+
+        for (int i = 0; i < materials.Length; i++)
+        {
+            if (materials[i].name.StartsWith(mirror.name.Split(' ')[0]))
+            {
+                materials[i] = mirrorCracked;
+                break;
+            }
+        }
+
+        meshRenderer.materials = materials;
+
         //Handle colliding with ragdoll
         Transform currentTransform = collision.transform;
 
@@ -212,23 +230,6 @@ public class CarController : MonoBehaviour
         yield return new WaitForSeconds(4);
         SceneManager.LoadScene("Police");
 
-        //Handle Crash
-        isCrashed = true;
-        currentGear = "N";
-
-        // Find the "mirror" material and change it to "mirror_cracked"
-        Material[] materials = meshRenderer.materials;
-
-        for (int i = 0; i < materials.Length; i++)
-        {
-            if (materials[i].name.StartsWith(mirror.name.Split(' ')[0]))
-            {
-                materials[i] = mirrorCracked;
-                break;
-            }
-        }
-
-        meshRenderer.materials = materials;
     }
 
     private void UpdateWheelTransform(WheelCollider wheelCollider, Transform wheelTransform)
