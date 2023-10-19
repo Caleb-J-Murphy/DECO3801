@@ -702,22 +702,17 @@ MonoBehaviour:
   avatars:
   - {fileID: 21300000, guid: 544bf720675cce84a86f8728339ef083, type: 3}
   - {fileID: 21300000, guid: 30e93804867e27640877653790125852, type: 3}
-  - {fileID: 21300000, guid: 30e93804867e27640877653790125852, type: 3}
-  - {fileID: 21300000, guid: 30e93804867e27640877653790125852, type: 3}
   dialogues:
   - You took away a mother, a sister, a friend from us... Why? What could possibly
     have been so urgent that you would run over someone like that?
   - With a heavy heart I see this as an utter disregard for the sanctity of our roads
     and the lives of people on them. Your actions have consequences, grave consequences.
-  - 'I hereby charge you with first-degree murder, a reflection of the pain you''ve
-    caused. '
-  - I hope this serves as a stark reminder of the importance of road safety and respect
-    for human life. You may never see the light of day again.
+    I hereby charge you with first-degree murder, a reflection of the pain you've
+    caused. I hope this serves as a stark reminder of the importance of road safety
+    and respect for human life. You may never see the light of day again.
   audioClips:
-  - {fileID: 8300000, guid: 1533377f08d7d624aa8f7c44761c7c34, type: 3}
-  - {fileID: 8300000, guid: 5a90c974217818040bdca61c766a480b, type: 3}
-  - {fileID: 8300000, guid: e9d40e936f83bd24d9629dd6b47f681c, type: 3}
-  - {fileID: 8300000, guid: 6ef9dbaea4c089047bf1f74d94a6737f, type: 3}
+  - {fileID: 8300000, guid: db73e5a7324855e44b249828509f4b43, type: 3}
+  - {fileID: 8300000, guid: cfeb39a411a7bc44991ec796d065374e, type: 3}
 --- !u!4 &1893976179
 Transform:
   m_ObjectHideFlags: 0
