@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -167,12 +167,13 @@ MonoBehaviour:
   - Reckless driving is never an excuse. What you did, it's cost someone their life,
     a family their loved one...
   audioClips:
-  - {fileID: 8300000, guid: 1533377f08d7d624aa8f7c44761c7c34, type: 3}
-  - {fileID: 8300000, guid: 5a90c974217818040bdca61c766a480b, type: 3}
-  - {fileID: 8300000, guid: e9d40e936f83bd24d9629dd6b47f681c, type: 3}
-  - {fileID: 8300000, guid: 6ef9dbaea4c089047bf1f74d94a6737f, type: 3}
+  - {fileID: 8300000, guid: 29ec5710862f8264ba50046d9535cf28, type: 3}
+  - {fileID: 8300000, guid: 722cdaae977e54742b75e3e06df5abe7, type: 3}
+  - {fileID: 8300000, guid: 4564a9aa0a0193443a31399becc4d998, type: 3}
+  - {fileID: 8300000, guid: 104c9665958354e40ba31de8b76d8162, type: 3}
   isOpening: 0
   isPolice: 1
+  isCourtRoom: 0
 --- !u!4 &374546891
 Transform:
   m_ObjectHideFlags: 0
