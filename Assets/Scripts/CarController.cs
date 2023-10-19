@@ -47,9 +47,6 @@ public class CarController : MonoBehaviour
     public Material mirror;
     public Material mirrorCracked;
 
-    [Header("FadeOut")]
-    public UnityEngine.UI.Image image;
-
 
 
     [Header("Particle")]
@@ -79,11 +76,6 @@ public class CarController : MonoBehaviour
 
             GetCurrentGear();
             //
-        } else {
-            // make canvas less transparent
-            Color c = image.color;
-            c.a += 0.01f * Time.deltaTime;
-            image.color = c;
         }
     }
 
