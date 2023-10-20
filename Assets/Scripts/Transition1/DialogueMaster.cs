@@ -18,7 +18,7 @@ public class DialogueMaster : MonoBehaviour
 
     public bool isPolice;
 
-    public bool isCourtRoom;
+    public bool isEnding;
 
     private bool startedDialogue = false;
 
@@ -64,7 +64,7 @@ public class DialogueMaster : MonoBehaviour
         else if (isPolice) {
             SceneManager.LoadScene("Courtroom");
         }
-        else if (isCourtRoom) {
+        else if (isEnding) {
             SceneManager.LoadScene("Home Screen");
         }
     }

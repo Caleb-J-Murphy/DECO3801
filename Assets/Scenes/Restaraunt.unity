@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -185,6 +182,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 48de78ee41f044f4a8dd00f3c0c89b35, type: 3}
   - {fileID: 8300000, guid: 22e7ace81870ad946b1e9beb27f07e9b, type: 3}
   - {fileID: 8300000, guid: 258d9061af5b1a740bc0e9375d3c307c, type: 3}
+  isOpening: 0
+  isPolice: 0
+  isEnding: 1
 --- !u!4 &379571632
 Transform:
   m_ObjectHideFlags: 0

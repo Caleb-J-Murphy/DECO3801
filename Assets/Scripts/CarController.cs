@@ -180,8 +180,18 @@ public class CarController : MonoBehaviour
                     blood.Play();
                 }
                 // You've found the first parent with the "npc" tag.
+                yield return new WaitForSeconds(4);
+                SceneManager.LoadScene("Police");
 
                 break;
+            }
+            else if (currentTransform.CompareTag("car")) {
+                yield return new WaitForSeconds(4);
+                SceneManager.LoadScene("Crash");
+            }
+            else if (currentTransform.CompareTag("building")) {
+                yield return new WaitForSeconds(4);
+                SceneManager.LoadScene("Restaraunt");
             }
 
             currentTransform = currentTransform.parent;
@@ -227,8 +237,6 @@ public class CarController : MonoBehaviour
             // Optionally, you can disable the car's collider or gameObject to prevent multiple collisions.
             // gameObject.SetActive(false);
         }
-        yield return new WaitForSeconds(4);
-        SceneManager.LoadScene("Police");
 
     }
 

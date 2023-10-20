@@ -17,4 +17,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Courtroom.unity
     guid: ad24bed38dfced241987e10219130982
+  - enabled: 1
+    path: Assets/Scenes/Restaraunt.unity
+    guid: 15ff3d8e4d7dff243a331297dd678c84
+  - enabled: 1
+    path: Assets/Scenes/Crash.unity
+    guid: 93b407659c7d08f439414921e99228a3
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

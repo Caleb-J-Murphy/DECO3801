@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -713,6 +710,9 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: db73e5a7324855e44b249828509f4b43, type: 3}
   - {fileID: 8300000, guid: cfeb39a411a7bc44991ec796d065374e, type: 3}
+  isOpening: 0
+  isPolice: 0
+  isEnding: 1
 --- !u!4 &1893976179
 Transform:
   m_ObjectHideFlags: 0
