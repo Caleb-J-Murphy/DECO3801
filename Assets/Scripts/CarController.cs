@@ -61,6 +61,10 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
+        if (transform.position.z < -800f) {
+
+                SceneManager.LoadScene("Win");
+        }
         if (!isCrashed) {
             // Input handling
             motorInput = Input.GetAxis("Vertical");
